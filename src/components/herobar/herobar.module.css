@@ -34,4 +34,8 @@
   .main {
     height: calc(150vh - 75px);
   }
+  .imgcon img {
+    width: 300px;
+    height: 300px;
+  }
 }
