@@ -27,5 +27,11 @@
   margin-top: 30px;
 }
 .butcon button {
-  margin: 10px;
+  margin: 10px;c
+}
+
+@media screen and (max-width: 810px) {
+  .main {
+    height: calc(150vh - 75px);
+  }
 }
