@@ -1,0 +1,65 @@
+.main {
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  height: 75px;
+  position: relative;
+}
+.logocon {
+  height: 100%;
+  width: 230px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-5deg);
+}
+.signlog {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signlog button {
+  margin: 5px;
+}
+.navbar {
+  position: absolute;
+  right: 230px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav {
+  margin: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.nav:hover {
+  color: #f85606;
+}
+.menuicon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .nav {
+    display: none;
+  }
+  .signlog {
+    display: none;
+  }
+}

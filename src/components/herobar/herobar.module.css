@@ -1,0 +1,31 @@
+.main {
+  width: 100%;
+  height: calc(100vh - 75px);
+  background-color: #f85606;
+  background-image: linear-gradient(180deg, #f85606 0%, #fc00ff 100%);
+}
+.imgcon {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.imgcon img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+.butcon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.butcon button {
+  margin: 10px;
+}
