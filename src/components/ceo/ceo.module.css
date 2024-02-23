@@ -1,0 +1,39 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.para {
+  width: 450px;
+  box-shadow: 7px 7px 0px #f85606;
+  text-align: left;
+  padding: 10px;
+  background-color: purple;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  margin: 10px;
+  text-align: center;
+}
+.para span {
+  color: #ea9063;
+}
+.myimg {
+  width: 400px;
+  height: 400px;
+}
+@media screen and (max-width: 400px) {
+  .photo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .myimg {
+    width: 90%;
+    height: auto;
+  }
+}

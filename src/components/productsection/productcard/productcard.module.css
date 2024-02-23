@@ -1,0 +1,37 @@
+.main {
+  width: 250px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 5px rgba(221, 10, 185, 0.3);
+  cursor: pointer;
+}
+.imgcon {
+  width: 100%;
+}
+.img {
+  width: 100%;
+  height: auto;
+  transition: all 0.3s linear;
+}
+.img:hover{
+transform: scale(1.2);
+}
+
+.title {
+  font-weight: 600;
+  padding-left: 10px;
+  color: #f85606;
+}
+.title:hover{
+    color: purple;
+}
+.prices {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.prices div {
+  margin: 3px;
+}
