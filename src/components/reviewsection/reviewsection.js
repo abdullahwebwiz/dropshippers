@@ -14,45 +14,36 @@ let data = [
     msg: "This is a very useful plateform. I will recommend this plateform toall my fellow all accross the country. 5 out of 5 stars from me. Trust me you will love it too. My dear brothers and sisters you need to raise and shine.",
     stars: 5,
   },
-  {
-    name: "Javed",
-    city: "Lahore",
-    msg: "This is a very useful plateform. I will recommend this plateform toall my fellow all accross the country. 5 out of 5 stars from me. Trust me you will love it too. My dear brothers and sisters you need to raise and shine.",
-    stars: 5,
-  },
-  {
-    name: "Kamran",
-    city: "Quetta",
-    msg: "This is a very useful plateform. I will recommend this plateform toall my fellow all accross the country. 5 out of 5 stars from me. Trust me you will love it too. My dear brothers and sisters you need to raise and shine.",
-    stars: 5,
-  },
-  {
-    name: "Adam",
-    city: "Peshawar",
-    msg: "This is a very useful plateform. I will recommend this plateform toall my fellow all accross the country. 5 out of 5 stars from me. Trust me you will love it too. My dear brothers and sisters you need to raise and shine.",
-    stars: 5,
-  },
 ];
 
 const ReviewSection = () => {
   return (
     <div className={style.main}>
       <div className={style.reviewcon}>
-        <div className={style.review}>
-          <div className={style.namecity}>
-            <div className={style.name}>Abdullah</div>
-            <div className={style.city}>From Kohat</div>
-          </div>
-          <div className={style.msg}>
-            This is a very useful plateform. I will recommend this plateform to
-            all my fellow all accross the country. 5 out of 5 stars from me.
-            Trust me you will love it too. My dear brothers and sisters you need
-            to raise and shine.
-          </div>
-          <div className={style.stars}>
-            <Image src={'/star.png'} width={100} height={100}/>
-          </div>
-        </div>
+        {
+          data ?
+            data.map((content, index) => {
+              return (
+                <div className={style.review} key={index}>
+                  <div className={style.namecity}>
+                    <div className={style.name}>{content.name}</div>
+                    <div className={style.city}>From {content.city}</div>
+                  </div>
+                  <div className={style.msg}>
+                    {content.msg}
+                  </div>
+                  <div className={style.stars}>
+                    {[...Array(content.stars)].map((_, index) => (
+                      <Image src={'/star.png'} width={35} height={35} key={index} />
+                    ))}
+
+                  </div>
+                </div>
+              )
+            })
+            : ""
+        }
+
       </div>
     </div>
   );
