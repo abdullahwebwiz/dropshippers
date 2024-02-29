@@ -14,6 +14,18 @@ const Header = () => {
           className={style.logo}
         />
       </div>
+      <div className={style.icons}>
+        <Image src={"/social_icons/facebook_p.png"} width={40} height={40} />
+        <Image src={"/social_icons/instagram_p.png"} width={40} height={40} />
+        <Image src={"/social_icons/youtube_p.png"} width={40} height={40} />
+        <Image src={"/social_icons/tiktok_p.png"} width={40} height={40} />
+        <Image src={"/social_icons/linkedin_p.png"} width={40} height={40} />
+      </div>
+      <div className={style.navbar}>
+        <div className={style.nav}>اردو</div>
+        <div className={style.nav}>Products</div>
+        <div className={style.nav}>Support</div>
+      </div>
       <div className={style.signlog}>
         <Button
           variant="outlined"
@@ -34,11 +46,6 @@ const Header = () => {
         >
           Sign Up
         </Button>
-      </div>
-      <div className={style.navbar}>
-        <div className={style.nav}>اردو</div>
-        <div className={style.nav}>Products</div>
-        <div className={style.nav}>Support</div>
       </div>
       <div className={style.menuicon}>
         <Image src={"/menu.png"} width={40} height={40} alt={"menu"} />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const LearnMore = ({ link }) => {
+const LearnMore = ({ link, color }) => {
   return (
     <div
       style={{
@@ -11,7 +11,10 @@ const LearnMore = ({ link }) => {
         textAlign: "center",
       }}
     >
-      <Link href={link}> {"Learn More 🚀"}</Link>
+      <Link href={link} style={{ color: color ? color : "black" }}>
+        {" "}
+        {"Learn More 🚀"}
+      </Link>
     </div>
   );
 };

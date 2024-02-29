@@ -18,7 +18,7 @@ const AboutSection = () => {
           <iframe
             width={250 * 1.77777777778}
             height={250}
-            src={`https://www.youtube.com/embed/${"3O51pIMcoc8"}`}
+            src={`https://www.youtube.com/embed/${"o-I61UoVWR8"}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Video Intro"

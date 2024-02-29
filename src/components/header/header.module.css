@@ -36,6 +36,23 @@
   justify-content: center;
   align-items: center;
 }
+.icons {
+  position: absolute;
+  right: 430px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icons img {
+  margin: 3px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.icons img:hover{
+transform: scale(1.1);
+}
 .nav {
   margin: 10px;
   font-weight: 500;

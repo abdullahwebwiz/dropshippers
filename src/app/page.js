@@ -11,6 +11,10 @@ import CEO from "@/components/ceo/ceo";
 import ProductSection from "@/components/productsection/productsection";
 import LearnMore from "@/components/title/learnmore/learnmore";
 import CategorySection from "@/components/categorysection/categorysection";
+import Blogs from "@/components/blogs/blogs";
+import Tutorials from "@/components/tutorials/tutorials";
+import Stat from "@/components/stat/stat";
+import ReviewSection from "@/components/reviewsection/reviewsection";
 
 export default function Home() {
   return (
@@ -30,12 +34,23 @@ export default function Home() {
       <Title color={"o"} title={"About CEO 💼"} />
       <CEO />
       <Space />
+      <Tutorials />
+      <Space />
       <Title color={"p"} title={"CheckOut Products 🛍️"} />
       <ProductSection />
       <LearnMore link={"/"} />
       <Space />
       <Title color={"o"} title={"Categories 🛍️"} />
       <CategorySection />
+      <LearnMore link={"/"} />
+      <Space />
+      <Title color={"p"} title={"News & updates 📝"} />
+      <Blogs />
+      <LearnMore link={"/"} />
+      <Space />
+      <Stat />
+      <Space />
+      <ReviewSection />
     </div>
   );
 }
