@@ -11,7 +11,7 @@
   text-align: left;
   padding: 10px 0;
   /* border: 1px solid green; */
-  color: #25a1ff;
+  color: #f85606;
   font-weight: 600;
   cursor: default;
 }
@@ -31,5 +31,5 @@
   cursor: pointer;
 }
 .linklist div:hover {
-  color: #25a1ff;
+  color: #f85606;
 }
