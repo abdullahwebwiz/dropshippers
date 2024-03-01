@@ -1,0 +1,107 @@
+.main {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px 0;
+  position: relative;
+
+  background: radial-gradient(
+        35.36% 35.36% at 100% 25%,
+        #0000 66%,
+        #f85606 68% 70%,
+        #0000 72%
+      )
+      18px 18px / calc(2 * 18px) calc(2 * 18px),
+    radial-gradient(
+        35.36% 35.36% at 0 75%,
+        #0000 66%,
+        #f85606 68% 70%,
+        #0000 72%
+      )
+      18px 18px / calc(2 * 18px) calc(2 * 18px),
+    radial-gradient(
+        35.36% 35.36% at 100% 25%,
+        #0000 66%,
+        #f85606 68% 70%,
+        #0000 72%
+      )
+      0 0 / calc(2 * 18px) calc(2 * 18px),
+    radial-gradient(
+        35.36% 35.36% at 0 75%,
+        #0000 66%,
+        #f85606 68% 70%,
+        #0000 72%
+      )
+      0 0 / calc(2 * 18px) calc(2 * 18px),
+    repeating-conic-gradient(#e4e4ed 0 25%, #0000 0 50%) 0 0 / calc(2 * 18px)
+      calc(2 * 18px),
+    radial-gradient(#0000 66%, #f85606 68% 70%, #0000 72%) 0 calc(18px / 2) /
+      18px 18px #e4e4ed;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text {
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.inputcon {
+  outline: 2px solid purple;
+  height: 50px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.newsinput {
+border: none;
+height: 100%;
+width: 70%;
+font-size: 20px;
+color: purple;
+padding-left: 10px;
+}
+.newsinput:focus{
+border: none;
+outline: none;
+}
+.newsbutton {
+  height: 100%;
+  width: 30%;
+  background-color: #a020f0;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+  .newsinput {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .newsinput {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .newsinput {
+    width: 150px;
+  }
+}

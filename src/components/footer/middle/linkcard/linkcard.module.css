@@ -1,0 +1,35 @@
+.main {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  flex-direction: column;
+  margin: 20px 5px;
+}
+.title {
+  width: 100%;
+  text-align: left;
+  padding: 10px 0;
+  /* border: 1px solid green; */
+  color: #25a1ff;
+  font-weight: 600;
+  cursor: default;
+}
+
+.linklist {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* border: 1px solid blue; */
+}
+.linklist div {
+  margin: 5px;
+  /* border: 1px solid purple; */
+  color: white;
+  cursor: pointer;
+}
+.linklist div:hover {
+  color: #25a1ff;
+}

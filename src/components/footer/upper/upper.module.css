@@ -1,0 +1,51 @@
+.main {
+  width: 100%;
+  background-color: #25a1ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+.icons img {
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.3s linear all;
+  width: 40px;
+  height: 40px;
+}
+.icons img:hover {
+  transform: scale(1.2);
+}
+@media screen and (max-width: 500px) {
+  .main {
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 330px) {
+  .main {
+    justify-content: center;
+    align-items: center;
+  }
+  .icons img {
+    margin: 5px;
+    width: 25px;
+    height: 25px;
+  }
+}
+@media screen and (max-width: 230px) {
+.icons{
+  flex-wrap: wrap;
+}
+}
