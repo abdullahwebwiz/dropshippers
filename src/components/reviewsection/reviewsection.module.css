@@ -1,5 +1,6 @@
 .main {
   width: 90%;
+  height: 300px;
   margin: auto;
   margin-bottom: 100px;
   border-radius: 25px;
@@ -9,8 +10,92 @@
   justify-content: center;
   align-items: center;
 }
-.reviewcon{
-width: 400px;
-border: 2px solid red;
 
+.window {
+  width: 60%;
+  border: 2px solid red;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow: hidden;
+  height: 90%;
+}
+
+.reviewcon {
+  height: 100%;
+  border: 2px solid purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  animation: scroll1 19s infinite;
+}
+
+.review {
+  height: 100%;
+  width: calc(100% / 1);
+  flex: 0 0 auto;
+  border: 2px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.namecity {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid hotpink;
+  width: 100%;
+}
+
+.name {
+  border: 1px solid black;
+}
+
+.city {
+  border: 1px solid black;
+}
+
+.msg {
+  border: 2px solid yellow;
+  text-align: center;
+}
+
+.stars {
+  border: 2px solid purple;
+}
+@media screen and (max-width: 750px) {
+.window{
+width: 95%;
+}
+}
+@media screen and (max-width: 750px) {
+  .msg{
+  width: 80%;
+  }
+  }
+@keyframes scroll1 {
+  0% {
+      transform: translateX(100%);
+  }
+  25% {
+      transform: translateX(100%);
+  }
+  33.33% {
+      transform: translateX(0%);
+  }
+  58.33% {
+      transform: translateX(0%);
+  }
+  66.66% {
+      transform: translateX(-100%);
+  }
+  91.66% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(100%);
+  }
 }

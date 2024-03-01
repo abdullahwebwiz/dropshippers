@@ -14,7 +14,7 @@ import CategorySection from "@/components/categorysection/categorysection";
 import Blogs from "@/components/blogs/blogs";
 import Tutorials from "@/components/tutorials/tutorials";
 import Stat from "@/components/stat/stat";
-import ReviewSection from "@/components/reviewsection/reviewsection";
+import ReviewSection from "@/components/reviewsection2/reviewsection";
 
 export default function Home() {
   return (
