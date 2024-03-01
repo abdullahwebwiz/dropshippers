@@ -9,6 +9,7 @@ const CategorySection = () => {
           width={300}
           height={150}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
 
@@ -18,6 +19,7 @@ const CategorySection = () => {
           width={300}
           height={150}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
       <div className={`${style.block}`}>
@@ -26,6 +28,7 @@ const CategorySection = () => {
           width={300}
           height={150}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
       <div className={`${style.block}`}>
@@ -34,6 +37,7 @@ const CategorySection = () => {
           width={300}
           height={300}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
       <div className={`${style.block}`}>
@@ -42,6 +46,7 @@ const CategorySection = () => {
           width={300}
           height={150}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
       <div className={`${style.block}`}>
@@ -50,6 +55,7 @@ const CategorySection = () => {
           width={300}
           height={150}
           className={`${style.img}`}
+          alt="category image"
         />
       </div>
     </div>

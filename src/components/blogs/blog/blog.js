@@ -8,6 +8,7 @@ const Blog = () => {
         width={300}
         height={150}
         className={`${style.img}`}
+        alt="blog thumbnail"
       />
       <div className={style.title}>
         This is my post and You can read it to get knowledge. I hope you will

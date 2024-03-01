@@ -27,6 +27,11 @@
 .icons img:hover {
   transform: scale(1.2);
 }
+
+.imgcon {
+  border: 2px solid black;
+}
+
 @media screen and (max-width: 500px) {
   .main {
     justify-content: center;
@@ -45,7 +50,7 @@
   }
 }
 @media screen and (max-width: 230px) {
-.icons{
-  flex-wrap: wrap;
-}
+  .icons {
+    flex-wrap: wrap;
+  }
 }

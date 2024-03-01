@@ -9,6 +9,7 @@ const ProductCard = () => {
           width={300}
           height={300}
           className={style.img}
+          alt="product thumbnail"
         />
       </div>
       <div className={style.title}>TWS Air Pro 2 | Noise Cancelation.</div>

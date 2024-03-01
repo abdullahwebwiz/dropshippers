@@ -15,11 +15,36 @@ const Header = () => {
         />
       </div>
       <div className={style.icons}>
-        <Image src={"/social_icons/facebook_p.png"} width={40} height={40} />
-        <Image src={"/social_icons/instagram_p.png"} width={40} height={40} />
-        <Image src={"/social_icons/youtube_p.png"} width={40} height={40} />
-        <Image src={"/social_icons/tiktok_p.png"} width={40} height={40} />
-        <Image src={"/social_icons/linkedin_p.png"} width={40} height={40} />
+        <Image
+          src={"/social_icons/facebook_p.png"}
+          width={40}
+          height={40}
+          alt={"facebook icon"}
+        />
+        <Image
+          src={"/social_icons/instagram_p.png"}
+          width={40}
+          height={40}
+          alt={"instagram icon"}
+        />
+        <Image
+          src={"/social_icons/youtube_p.png"}
+          width={40}
+          height={40}
+          alt={"youtube icon"}
+        />
+        <Image
+          src={"/social_icons/tiktok_p.png"}
+          width={40}
+          height={40}
+          alt={"tiktok icon"}
+        />
+        <Image
+          src={"/social_icons/linkedin_p.png"}
+          width={40}
+          height={40}
+          alt={"linkedin icon"}
+        />
       </div>
       <div className={style.navbar}>
         <div className={style.nav}>اردو</div>
