@@ -15,6 +15,7 @@ import Blogs from "@/components/blogs/blogs";
 import Tutorials from "@/components/tutorials/tutorials";
 import Stat from "@/components/stat/stat";
 import ReviewSection from "@/components/reviewsection2/reviewsection";
+import FAQS from "@/components/faqs/faqs";
 
 export default function Home() {
   return (
@@ -51,6 +52,8 @@ export default function Home() {
       <Stat />
       <Space />
       <ReviewSection />
+      <Space />
+      <FAQS />
     </div>
   );
 }
