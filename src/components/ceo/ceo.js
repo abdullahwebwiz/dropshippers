@@ -1,9 +1,21 @@
+"use client";
+import Swal from "sweetalert2";
 import Image from "next/image";
 import style from "./ceo.module.css";
 const CEO = () => {
   return (
     <div className={style.main}>
-      <div className={style.photo}>
+      <div
+        className={style.photo}
+        onClick={() => {
+          Swal.fire({
+            title: "About Aneeq",
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+            icon: "info",
+          });
+        }}
+      >
+        <div className={style.name}>Mohammad Aneeq</div>
         <Image
           src={"/ceo.svg"}
           width={400}
@@ -12,7 +24,26 @@ const CEO = () => {
           alt="CEO"
         />
       </div>
-      <div className={style.para}>
+      <div
+        className={style.photo}
+        onClick={() => {
+          Swal.fire({
+            title: "About Abdullah",
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+            icon: "info",
+          });
+        }}
+      >
+        <div className={style.name}>Mohammad Abdullah</div>
+        <Image
+          src={"/ceo.svg"}
+          width={400}
+          height={400}
+          className={style.myimg}
+          alt="CEO"
+        />
+      </div>
+      {/* <div className={style.para}>
         <span>{"As-salamu alaykum"}</span>
         {". Warm greetings to all aspiring young Entrepreneurs!"}
         <span>{"DropShippers.pk"}</span>
@@ -35,7 +66,7 @@ const CEO = () => {
         <span>{"DropShippers.pk"}</span>
         {" today, and together, let's embark on a journey of "}
         <span>{"growth and success"}</span>.
-      </div>
+      </div> */}
     </div>
   );
 };

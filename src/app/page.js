@@ -34,7 +34,7 @@ export default function Home() {
       <Title color={"p"} title={"4 steps Only ✅"} />
       <Steps />
       <Space />
-      <Title color={"o"} title={"About CEO 💼"} />
+      <Title color={"o"} title={"About Co-founders 💼"} />
       <CEO />
       <Space />
       <Tutorials />

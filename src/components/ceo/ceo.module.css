@@ -6,6 +6,31 @@
   flex-wrap: wrap;
   flex-direction: row;
 }
+.photo {
+  cursor: pointer;
+  position: relative;
+}
+.photo img {
+  transition: 0.3s linear all;
+z-index: 2;
+}
+.photo img:hover {
+  transform: scale(1.1);
+}
+.name {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid #f85606;
+  width: 100%;
+  color: purple;
+  font-weight: 600;
+  border-radius: 30px;
+}
 .para {
   width: 450px;
   box-shadow: 7px 7px 0px #f85606;

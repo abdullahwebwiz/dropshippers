@@ -2,7 +2,7 @@ import LinkCard from "./linkcard/linkcard";
 import style from "./middle.module.css";
 let data = [
   {
-    title: "ThephonesGrarage.com",
+    title: "MyWebsite.com",
     links: ["Newsletter", "Blogs & News", "Contact", "About", "Careers"],
   },
   {
