@@ -12,12 +12,12 @@ export const POST = async (req) => {
     let result = await Admin.findOne({ admin: admin, password: pass });
     console.log(result);
     if (result) {
-      return NextResponse.json({ msg: "success" });
+      return NextResponse.json(result);
     } else {
-      return NextResponse.json({ msg: "failed" });
+      return NextResponse.json(result);
     }
   } catch (error) {
     console.error("Error connecting to MongoDB", error.message);
-    return NextResponse.json({ msg: "failed" });
+    return NextResponse.json(result);
   }
 };

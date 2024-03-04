@@ -2,8 +2,8 @@
 import { apiCall } from "@/utils/apicall";
 const Page = () => {
   const x = async () => {
-    const url = "http://localhost:3000/api/adminverify"; // Replace with your API URL
-    const method = "POST"; // or 'POST', 'PUT', 'DELETE', etc. depending on your API
+    const url = "http://localhost:3000/api/adminverify";
+    const method = "POST";
     const body = {
       admin: "abdullah_admin",
       password: "admin_123",
