@@ -4,7 +4,7 @@ const Upper = () => {
   return (
     <div className={style.main}>
       <div className={style.imgcon}>
-        <Image src={"/logotemp.svg"} width={230} height={60} />
+        <Image src={"/logo.svg"} width={230} height={60} />
       </div>
       <div className={style.icons}>
         <Image

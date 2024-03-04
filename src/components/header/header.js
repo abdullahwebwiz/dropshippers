@@ -7,7 +7,7 @@ const Header = () => {
       <div className={style.logocon}>
         {" "}
         <Image
-          src={"/logotemp.svg"}
+          src={"/logo.svg"}
           width={230}
           height={60}
           alt={"logo"}

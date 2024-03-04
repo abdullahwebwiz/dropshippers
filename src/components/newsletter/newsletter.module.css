@@ -66,16 +66,16 @@
   flex-wrap: nowrap;
 }
 .newsinput {
-border: none;
-height: 100%;
-width: 70%;
-font-size: 20px;
-color: purple;
-padding-left: 10px;
+  border: none;
+  height: 100%;
+  width: 70%;
+  font-size: 20px;
+  color: purple;
+  padding-left: 10px;
 }
-.newsinput:focus{
-border: none;
-outline: none;
+.newsinput:focus {
+  border: none;
+  outline: none;
 }
 .newsbutton {
   height: 100%;
@@ -91,17 +91,18 @@ outline: none;
 }
 
 @media screen and (max-width: 520px) {
-  .newsinput {
+  .inputcon {
     width: 300px;
   }
-}
-@media screen and (max-width: 420px) {
-  .newsinput {
-    width: 200px;
+  .newsbutton{
+    font-size: 12px;
+  }
+  .newsinput{
+  font-size: 12px;
   }
 }
-@media screen and (max-width: 320px) {
-  .newsinput {
-    width: 150px;
+@media screen and (max-width: 325px){
+  .inputcon {
+    width: 250px;
   }
 }
