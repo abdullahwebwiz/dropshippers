@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Drawer,
@@ -12,15 +13,26 @@ import {
   AttachMoney,
   ShoppingBasket,
   Notifications,
+  Home
 } from "@mui/icons-material";
-
+import { useRouter } from "next/navigation";
 const AdminSideBar = () => {
+  const router = useRouter();
   const menuItems = [
-    { text: "Products", icon: <Storefront />, path: "/products" },
-    { text: "Customers", icon: <People />, path: "/customers" },
-    { text: "Dropshippers", icon: <AttachMoney />, path: "/dropshippers" },
-    { text: "Orders", icon: <ShoppingBasket />, path: "/orders" },
-    { text: "Notifications", icon: <Notifications />, path: "/notifications" },
+    { text: "Home", icon: <Home />, path: "/admin" },
+    { text: "Products", icon: <Storefront />, path: "/admin/products" },
+    { text: "Customers", icon: <People />, path: "/admin/customers" },
+    {
+      text: "Dropshippers",
+      icon: <AttachMoney />,
+      path: "/admin/dropshippers",
+    },
+    { text: "Orders", icon: <ShoppingBasket />, path: "/admin/orders" },
+    {
+      text: "Notifications",
+      icon: <Notifications />,
+      path: "/admin/notifications",
+    },
   ];
 
   return (
@@ -39,7 +51,13 @@ const AdminSideBar = () => {
     >
       <List>
         {menuItems.map((item) => (
-          <ListItem button key={item.text}>
+          <ListItem
+            button
+            key={item.text}
+            onClick={() => {
+              router.push(item.path);
+            }}
+          >
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
           </ListItem>

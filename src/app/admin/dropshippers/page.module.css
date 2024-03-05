@@ -1,0 +1,9 @@
+.container {
+    display: flex; /* Use flexbox layout */
+  }
+  
+  .main {
+    flex-grow: 1;
+    height: 100vh;
+  }
+  
