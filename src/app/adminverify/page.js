@@ -26,6 +26,7 @@ const Page = () => {
         console.log(data);
         if (data) {
           Cookies.set("adminid", data.adminid, { expires: 1 });
+          Cookies.set("admin", data.admin, { expires: 1 });
           router.push("/admin");
         } else {
           alert("Something is wrong");

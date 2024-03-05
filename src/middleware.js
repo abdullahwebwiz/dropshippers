@@ -1,40 +1,41 @@
-import { NextResponse } from 'next/server'
-import { connectToDatabase } from './mongodb'
+import { NextResponse } from "next/server";
+import { mdb_url } from "@/lib/db";
+import { Admin } from "@/lib/model/admin";
+import mongoose from "mongoose";
 
 export async function middleware(request) {
-  // Get username and password cookies
-  const username = request.cookies.get('username')?.value
-  const password = request.cookies.get('password')?.value
+  await mongoose.connect(mdb_url);
+  const admin = request.cookies.get("admin")?.value;
+  const adminid = request.cookies.get("adminid")?.value;
 
-  if (!username || !password) {
-    return NextResponse.redirect('/login') 
+  // Find user in collection
+  const result = await Admin.findOne({
+    admin,
+    adminid,
+  });
+
+  // User not found
+  if (admin && adminid) {
+    return NextResponse.redirect(new URL("/adminverify", request.url));
+  }
+  if (!result) {
+    return NextResponse.redirect(new URL("/adminverify", request.url));
   }
 
-  // Connect to MongoDB
-  const { db } = await connectToDatabase()
-
-  // Check if password matches
-  const user = await db.collection('users').findOne({
-    username,
-    password 
-  })
-
-  if (!user) {
-    return NextResponse.redirect('/login')
+  // Verify user id
+  if (result.adminid !== adminid) {
+    return NextResponse.redirect(new URL("/adminverify", request.url));
+  }
+  if (request.nextUrl.pathname.startsWith("/adminverify")) {
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
-  // User is authenticated
-  // Check if trying to access login
-  if (request.nextUrl.pathname.startsWith('/login')) {
-    return NextResponse.redirect('/dashboard')
-  }
-
-  // Allow accessing dashboard
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.next()
+  // Allow dashboard page
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    return NextResponse.next();
   }
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|favicon.ico).*)'],
-}
+  matcher: ["/", "/admin", "/adminverify"],
+};
