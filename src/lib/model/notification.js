@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
-
-const customerModel = new mongoose.Schema({
-  c_id: String,
-  name: String,
-  city: String,
-  phone: String,
-  address: String,
+const notificationModel = new mongoose.Schema({
+  n_id: String,
+  text: String,
+  link: String,
 });
 
-export const Customer =
-  mongoose.models.customers || mongoose.model("customers", customerModel);
+export const Notification =
+  mongoose.models.notifications ||
+  mongoose.model("notifications", notificationModel);
+
+  

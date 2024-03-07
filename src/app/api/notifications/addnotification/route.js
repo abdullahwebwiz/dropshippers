@@ -1,29 +1,24 @@
 import { mdb_url } from "@/lib/db";
-import { Customer } from "@/lib/model/customers";
+import { Notification } from "@/lib/model/notification";
 import mongoose from "mongoose";
-import { randomBytes } from "crypto";
-import { join } from "path";
 import { customAlphabet } from "nanoid";
-import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
     let payload = await req.formData();
-    const { name, phone, city, address } = Object.fromEntries(payload);
+    const { text, link } = Object.fromEntries(payload);
 
     const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
-    let c_id = nanoid();
+    let n_id = nanoid();
 
-    const customer = new Customer({
-      c_id: c_id,
-      name: name,
-      phone: phone,
-      city: city,
-      address: address,
+    const notification = new Notification({
+      n_id: n_id,
+      text: text,
+      link: link,
     });
-    await customer.save();
+    await notification.save();
     return NextResponse.json({ msg: "success" });
   } catch (error) {
     console.log(error);

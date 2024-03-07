@@ -16,10 +16,12 @@ import ReviewSection from "@/components/reviewsection2/reviewsection";
 import FAQS from "@/components/faqs/faqs";
 import NewsLetter from "@/components/newsletter/newsletter";
 import Footer from "@/components/footer/footer";
+import WhatsAppIcon from "@/components/whatsappicon/whatsappicon";
 
 export default function Home() {
   return (
     <div>
+      <WhatsAppIcon />
       <Header />
       <HeroBar />
       <Space />
@@ -54,10 +56,10 @@ export default function Home() {
       <ReviewSection />
       <Space />
       <FAQS />
-      <Space/>
-      <NewsLetter/>
-      <Space/>
-      <Footer/>
+      <Space />
+      <NewsLetter />
+      <Space />
+      <Footer />
     </div>
   );
 }

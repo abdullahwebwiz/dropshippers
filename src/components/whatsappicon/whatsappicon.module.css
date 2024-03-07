@@ -1,0 +1,16 @@
+.img {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  animation: shake 0.5s infinite alternate;
+  animation-delay: 2s;
+  cursor: pointer;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}

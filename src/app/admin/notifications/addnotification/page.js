@@ -6,7 +6,6 @@ import style from "./page.module.css";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -22,15 +21,13 @@ const VisuallyHiddenInput = styled("input")({
 
 const Page = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    city: "",
-    address: "",
+    text: "",
+    link: "",
   });
 
   const handleSubmit = async () => {
-    const { name, phone, city, address } = formData;
-    if (!name || !phone || !city || !address) {
+    const { text, link } = formData;
+    if (!text || !link) {
       Swal.fire({
         title: "All fields are required",
         text: "Please fill in all the fields",
@@ -40,15 +37,12 @@ const Page = () => {
     }
 
     const formDataToSend = new FormData();
-    formDataToSend.append("name", name);
-    formDataToSend.append("phone", phone);
-    formDataToSend.append("city", city);
-    formDataToSend.append("address", address);
-
+    formDataToSend.append("text", text);
+    formDataToSend.append("link", link);
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/customers/addcustomer",
+        "http://localhost:3000/api/notifications/addnotification",
         {
           method: "POST",
           body: formDataToSend,
@@ -57,10 +51,8 @@ const Page = () => {
       console.log(response);
       if (response.ok) {
         setFormData({
-          name: "",
-          phone: "",
-          city: "",
-          address: "",
+          text: "",
+          link: "",
         });
 
         Swal.fire({
@@ -91,42 +83,22 @@ const Page = () => {
       <AdminSideBar />
       <div className={style.main}>
         <div className={style.form}>
-          <div className={style.title}>Add New Customer</div>
+          <div className={style.title}>Add New Notification</div>
           <TextField
             id="outlined-basic"
-            label="Name"
+            label="Text"
             variant="outlined"
             style={{ width: "95%" }}
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.text}
+            onChange={(e) => setFormData({ ...formData, text: e.target.value })}
           />
           <TextField
             id="outlined-basic"
-            label="Phone"
+            label="Link"
             variant="outlined"
             style={{ width: "95%" }}
-            value={formData.phone}
-            onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value })
-            }
-          />
-          <TextField
-            id="outlined-basic"
-            label="City"
-            variant="outlined"
-            style={{ width: "95%" }}
-            value={formData.city}
-            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Address"
-            variant="outlined"
-            style={{ width: "95%" }}
-            value={formData.address}
-            onChange={(e) =>
-              setFormData({ ...formData, address: e.target.value })
-            }
+            value={formData.link}
+            onChange={(e) => setFormData({ ...formData, link: e.target.value })}
           />
           <Button
             variant="contained"
