@@ -1,8 +1,14 @@
 .container {
-  display: flex; /* Use flexbox layout */
-}
-
-.main {
-  flex-grow: 1;
-  height: 100vh;
-}
+    display: flex; /* Use flexbox layout */
+  }
+  
+  .main {
+    flex-grow: 1;
+    height: 100vh;
+  }
+.addbut{
+width: 100%;
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}  
