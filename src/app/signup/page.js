@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -56,9 +57,11 @@ const Page = () => {
           body: formDataToSend,
         }
       );
+      const result = await response.json();
       console.log(response);
+      console.log(result);
       if (response.ok) {
-        Cookies.set("d_id", "123", { expires: 3 });
+        Cookies.set("d_id", result.d_id, { expires: 3 });
         Swal.fire({
           title: "Form Submitted",
           text: "Your form has been submitted successfully",
@@ -112,17 +115,25 @@ const Page = () => {
           style={{ width: "95%" }}
           value={formData.province}
           onChange={(e) =>
-            setFormData({ ...formData, videoLink: e.target.value })
+            setFormData({ ...formData, province: e.target.value })
           }
         />
         <TextField
           id="outlined-basic"
-          label="Description"
+          label="City"
           variant="outlined"
           style={{ width: "95%" }}
-          value={formData.description}
+          value={formData.city}
+          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+        />
+        <TextField
+          id="outlined-basic"
+          label="address"
+          variant="outlined"
+          style={{ width: "95%" }}
+          value={formData.address}
           onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
+            setFormData({ ...formData, address: e.target.value })
           }
         />
         <Button
