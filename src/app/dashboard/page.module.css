@@ -1,16 +1,24 @@
-.header{
-width: 100%;
-box-shadow: 5px 0 5px black;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 5px;
+.header {
+  width: 100%;
+  box-shadow: 5px 0 5px black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
 }
-.name{
-color: purple;
-font-size: 25px;
-font-weight: 700;
+.name {
+  color: purple;
+  font-size: 25px;
+  font-weight: 700;
 }
-.img{
-cursor: pointer;
+.img {
+  cursor: pointer;
+}
+.welcome {
+  width: 100%;
+  text-align: center;
+  color: #A020F0;
+  font-size: 35px;
+  font-weight: 700;
+  margin-top: 100px;
 }
