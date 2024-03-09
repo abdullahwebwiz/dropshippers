@@ -1,0 +1,16 @@
+.header{
+width: 100%;
+box-shadow: 5px 0 5px black;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 5px;
+}
+.name{
+color: purple;
+font-size: 25px;
+font-weight: 700;
+}
+.img{
+cursor: pointer;
+}
