@@ -7,6 +7,8 @@ import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -20,7 +22,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-let category = [
+let categoryOptions = [
   "Electronics",
   "Clothing",
   "Home & Kitchen",
@@ -30,7 +32,7 @@ let category = [
   "Health & Wellness",
   "Sports & Outdoors",
   "Pet Supplies",
-  "Automotive"
+  "Automotive",
 ];
 
 const Page = () => {
@@ -165,16 +167,21 @@ const Page = () => {
               setFormData({ ...formData, videoLink: e.target.value })
             }
           />
-          <TextField
+          <Select
             id="outlined-basic"
-            label="Category"
-            variant="outlined"
-            style={{ width: "95%" }}
             value={formData.category}
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
-          />
+            variant="outlined"
+            style={{ width: "95%" }}
+          >
+            {categoryOptions.map((category, index) => (
+              <MenuItem key={index} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+          </Select>
           <TextField
             id="outlined-basic"
             label="Description"
