@@ -8,7 +8,6 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -21,18 +20,39 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
+let category = [
+  "Electronics",
+  "Clothing",
+  "Home & Kitchen",
+  "Beauty & Personal Care",
+  "Books",
+  "Toys & Games",
+  "Health & Wellness",
+  "Sports & Outdoors",
+  "Pet Supplies",
+  "Automotive"
+];
+
 const Page = () => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
     videoLink: "",
     description: "",
+    category: "",
     images: [],
   });
 
   const handleSubmit = async () => {
-    const { name, price, videoLink, description, images } = formData;
-    if (!name || !price || !videoLink || !description || images.length === 0) {
+    const { name, price, videoLink, description, images, category } = formData;
+    if (
+      !name ||
+      !price ||
+      !videoLink ||
+      !description ||
+      !category ||
+      images.length === 0
+    ) {
       Swal.fire({
         title: "All fields are required",
         text: "Please fill in all the fields",
@@ -56,6 +76,7 @@ const Page = () => {
     formDataToSend.append("price", price);
     formDataToSend.append("videoLink", videoLink);
     formDataToSend.append("description", description);
+    formDataToSend.append("category", category);
     images.forEach((image, index) => {
       formDataToSend.append(`image${index}`, image);
     });
@@ -142,6 +163,16 @@ const Page = () => {
             value={formData.videoLink}
             onChange={(e) =>
               setFormData({ ...formData, videoLink: e.target.value })
+            }
+          />
+          <TextField
+            id="outlined-basic"
+            label="Category"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.category}
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
             }
           />
           <TextField

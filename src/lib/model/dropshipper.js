@@ -7,6 +7,7 @@ const dropshipperModel = new mongoose.Schema({
   city: String,
   phone: String,
   address: String,
+  password: String,
 });
 
 export const Dropshipper =

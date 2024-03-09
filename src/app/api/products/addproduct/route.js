@@ -17,6 +17,7 @@ export const POST = async (req) => {
       price,
       videoLink,
       description,
+      category,
       image0,
       image1,
       image2,
@@ -46,6 +47,7 @@ export const POST = async (req) => {
       video: videoLink,
       Description: description,
       status: "active",
+      category: category,
     });
 
     await product.save();

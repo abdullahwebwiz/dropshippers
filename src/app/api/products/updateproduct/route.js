@@ -12,7 +12,7 @@ export const POST = async (req, content) => {
     await mongoose.connect(mdb_url);
     let payload = await req.formData();
     console.log(payload);
-    const { p_id, title, price, video, Description, status } =
+    const { p_id, title, price, video, Description, status, category } =
       Object.fromEntries(payload);
     const newData = {
       title: title,
@@ -20,6 +20,7 @@ export const POST = async (req, content) => {
       Description: Description,
       video: video,
       status: status,
+      category: category,
     };
 
     let data = await Product.findOneAndUpdate(

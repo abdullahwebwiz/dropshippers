@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import AdminSideBar from "@/components/adminsidebar/adminsidebar";
-import style from "./page.module.css";
-import TextField from "@mui/material/TextField";
-import { styled } from "@mui/material/styles";
-import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { styled } from "@mui/material/styles";
+import style from "./page.module.css";
+import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -28,11 +29,13 @@ const Page = () => {
     province: "",
     city: "",
     address: "",
+    password: "",
   });
-  let router = useRouter();
+  const router = useRouter();
+
   const handleSubmit = async () => {
-    const { name, phone, province, city, address } = formData;
-    if (!name || !phone || !province || !city || !city) {
+    const { name, phone, province, city, address, password } = formData;
+    if (!name || !phone || !province || !city || !city || !password) {
       Swal.fire({
         title: "All fields are required",
         text: "Please fill in all the fields",
@@ -47,6 +50,7 @@ const Page = () => {
     formDataToSend.append("province", province);
     formDataToSend.append("city", city);
     formDataToSend.append("address", address);
+    formDataToSend.append("password", password);
 
     try {
       console.log(formDataToSend);
@@ -60,7 +64,7 @@ const Page = () => {
       const result = await response.json();
       console.log(response);
       console.log(result);
-      if (response.ok) {
+      if (result.msg == "success") {
         Cookies.set("d_id", result.d_id, { expires: 3 });
         Swal.fire({
           title: "Form Submitted",
@@ -75,7 +79,11 @@ const Page = () => {
           }
         });
       } else {
-        throw new Error("Failed to submit form");
+        Swal.fire({
+          title: "Error",
+          text: "Failed to submit form. Please try again later.",
+          icon: "error",
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -85,6 +93,14 @@ const Page = () => {
         icon: "error",
       });
     }
+  };
+
+  const handleProvinceChange = (event) => {
+    setFormData({ ...formData, province: event.target.value, city: "" });
+  };
+
+  const handleCityChange = (event) => {
+    setFormData({ ...formData, city: event.target.value });
   };
 
   return (
@@ -109,31 +125,54 @@ const Page = () => {
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
         />
         <TextField
-          id="outlined-basic"
+          id="outlined-select-province"
+          select
           label="Province"
           variant="outlined"
           style={{ width: "95%" }}
           value={formData.province}
-          onChange={(e) =>
-            setFormData({ ...formData, province: e.target.value })
-          }
-        />
+          onChange={handleProvinceChange}
+        >
+          {data1.provinces.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </TextField>
         <TextField
-          id="outlined-basic"
+          id="outlined-select-city"
+          select
           label="City"
           variant="outlined"
           style={{ width: "95%" }}
           value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-        />
+          onChange={handleCityChange}
+        >
+          {data1[formData.province]?.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
         <TextField
           id="outlined-basic"
-          label="address"
+          label="Address"
           variant="outlined"
           style={{ width: "95%" }}
           value={formData.address}
           onChange={(e) =>
             setFormData({ ...formData, address: e.target.value })
+          }
+        />
+        <TextField
+          type="password"
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          style={{ width: "95%" }}
+          value={formData.password}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
           }
         />
         <Button
