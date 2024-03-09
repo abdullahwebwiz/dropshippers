@@ -6,7 +6,7 @@ import { join } from "path";
 import { customAlphabet } from "nanoid";
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
-
+import bcrypt from "bcrypt";
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
@@ -16,7 +16,16 @@ export const POST = async (req) => {
     console.log(password);
     let result = await Dropshipper.findOne({ phone: phone });
     console.log(result);
-    return NextResponse.json({ msg: "success" });
+    if (result) {
+      const isMatch = await bcrypt.compare(password, result.password);
+      if (isMatch) {
+        return NextResponse.json({ msg: "success" });
+      } else {
+        return NextResponse.json({ msg: "failed" });
+      }
+    } else {
+      return NextResponse.json({ msg: "failed" });
+    }
   } catch (error) {
     console.log(error);
     return NextResponse.json({ msg: "failed" });
