@@ -24,12 +24,12 @@ const VisuallyHiddenInput = styled("input")({
 const Page = () => {
   const [formData, setFormData] = useState({
     phone: "",
-    password
+    password: "",
   });
   let router = useRouter();
   const handleSubmit = async () => {
-    const { name, phone, province, city, address } = formData;
-    if (!name || !phone || !province || !city || !city) {
+    const { phone, password } = formData;
+    if (!phone || !password) {
       Swal.fire({
         title: "All fields are required",
         text: "Please fill in all the fields",
@@ -39,16 +39,13 @@ const Page = () => {
     }
 
     const formDataToSend = new FormData();
-    formDataToSend.append("name", name);
     formDataToSend.append("phone", phone);
-    formDataToSend.append("province", province);
-    formDataToSend.append("city", city);
-    formDataToSend.append("address", address);
+    formDataToSend.append("password", password);
 
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/dropshippers/adddropshipper",
+        "http://localhost:3000/api/dropshippers/login",
         {
           method: "POST",
           body: formDataToSend,
@@ -57,7 +54,7 @@ const Page = () => {
       const result = await response.json();
       console.log(response);
       console.log(result);
-      if (response.ok) {
+      if (result.msg == "success") {
         Cookies.set("d_id", result.d_id, { expires: 3 });
         Swal.fire({
           title: "Form Submitted",
@@ -90,16 +87,7 @@ const Page = () => {
         <div className={style.title}>Sign Up to Continue</div>
         <TextField
           id="outlined-basic"
-          label="Name"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        />
-        <TextField
-          id="outlined-basic"
           label="Phone"
-          placeholder="03000000000"
           variant="outlined"
           style={{ width: "95%" }}
           value={formData.phone}
@@ -107,30 +95,12 @@ const Page = () => {
         />
         <TextField
           id="outlined-basic"
-          label="Province"
+          label="Password"
           variant="outlined"
           style={{ width: "95%" }}
-          value={formData.province}
+          value={formData.password}
           onChange={(e) =>
-            setFormData({ ...formData, province: e.target.value })
-          }
-        />
-        <TextField
-          id="outlined-basic"
-          label="City"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-        />
-        <TextField
-          id="outlined-basic"
-          label="address"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.address}
-          onChange={(e) =>
-            setFormData({ ...formData, address: e.target.value })
+            setFormData({ ...formData, password: e.target.value })
           }
         />
         <Button

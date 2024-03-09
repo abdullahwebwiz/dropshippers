@@ -58,6 +58,13 @@ export async function middleware(request) {
   if (d_idCookie && protectedPages.includes(pathname)) {
     return NextResponse.redirect(new URL("/signup", request.url));
   }
+  if (
+    !d_idCookie &&
+    request.nextUrl.pathname.startsWith("/dashboard")
+  ) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
   // ______________________________________________________________
 }
 
