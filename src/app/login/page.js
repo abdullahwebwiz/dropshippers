@@ -75,7 +75,7 @@ const Page = () => {
       console.error("Error submitting form:", error);
       Swal.fire({
         title: "Error",
-        text: "Failed to submit form. Please try again later.",
+        text: "Failed to submit form. Check phone & password.",
         icon: "error",
       });
     }
