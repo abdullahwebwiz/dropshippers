@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 function createData(
   Product_ID,
   Name,
+  Category,
   Description,
   Price,
   Video,
@@ -28,6 +29,7 @@ function createData(
   return {
     Product_ID,
     Name,
+    Category,
     Description,
     Price,
     Video,
@@ -111,6 +113,16 @@ const Page = () => {
                         fontWeight: "bold",
                       }}
                     >
+                      Category
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      style={{
+                        color: "white",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                      }}
+                    >
                       Price
                     </TableCell>
                     <TableCell
@@ -173,6 +185,7 @@ const Page = () => {
                     >
                       <TableCell align="left">{row.p_id}</TableCell>
                       <TableCell align="left">{row.title}</TableCell>
+                      <TableCell align="left">{row.category}</TableCell>
                       <TableCell align="left">{row.price}</TableCell>
                       <TableCell align="left">
                         {row.Description.substring(0, 40)}

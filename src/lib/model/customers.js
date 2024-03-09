@@ -6,7 +6,10 @@ const customerModel = new mongoose.Schema({
   city: String,
   phone: String,
   address: String,
+  reference: String,
 });
 
 export const Customer =
   mongoose.models.customers || mongoose.model("customers", customerModel);
+
+  

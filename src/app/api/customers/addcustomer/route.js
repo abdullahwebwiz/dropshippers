@@ -11,7 +11,8 @@ export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
     let payload = await req.formData();
-    const { name, phone, city, address } = Object.fromEntries(payload);
+    const { name, phone, city, address, reference } =
+      Object.fromEntries(payload);
 
     const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
     let c_id = nanoid();
@@ -22,6 +23,7 @@ export const POST = async (req) => {
       phone: phone,
       city: city,
       address: address,
+      reference:reference
     });
     await customer.save();
     return NextResponse.json({ msg: "success" });

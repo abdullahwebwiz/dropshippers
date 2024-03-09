@@ -26,6 +26,7 @@ const Page = () => {
     phone: "",
     city: "",
     address: "",
+    reference: "admin",
   });
 
   const handleSubmit = async () => {
@@ -44,6 +45,7 @@ const Page = () => {
     formDataToSend.append("phone", phone);
     formDataToSend.append("city", city);
     formDataToSend.append("address", address);
+    formDataToSend.append("reference", 'admin');
 
     try {
       console.log(formDataToSend);
