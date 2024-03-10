@@ -28,7 +28,6 @@ const Page = () => {
     province: "",
     city: "",
     address: "",
-    password: "",
   });
   const router = useRouter();
   const d_id = Cookies.get("d_id");
@@ -38,18 +37,21 @@ const Page = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          setFormData({ name: data.name });
-          setFormData({ phone: data.phone });
-          setFormData({ province: data.province });
-          setFormData({ city: data.city });
-          setFormData({ address: data.address });
+          setFormData({
+            ...formData,
+            name: data.name,
+            phone: data.phone,
+            province: data.province,
+            city: data.city,
+            address: data.address,
+          });
         });
     }
   }, [d_id]);
 
   const handleSubmit = async () => {
-    const { name, phone, province, city, address, password } = formData;
-    if (!name || !phone || !province || !city || !city || !password) {
+    const { name, phone, province, city, address } = formData;
+    if (!name || !phone || !province || !city || !city || !d_id) {
       Swal.fire({
         title: "All fields are required",
         text: "Please fill in all the fields",
@@ -64,12 +66,12 @@ const Page = () => {
     formDataToSend.append("province", province);
     formDataToSend.append("city", city);
     formDataToSend.append("address", address);
-    formDataToSend.append("password", password);
+    formDataToSend.append("d_id", d_id);
 
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/dropshippers/adddropshipper",
+        "http://localhost:3000/api/dropshippers/updatedropshipper",
         {
           method: "POST",
           body: formDataToSend,
@@ -79,10 +81,10 @@ const Page = () => {
       console.log(response);
       console.log(result);
       if (result.msg == "success") {
-        Cookies.set("d_id", result.d_id, { expires: 3 });
+
         Swal.fire({
           title: "Form Submitted",
-          text: "Your form has been submitted successfully",
+          text: "Your information is successfully Updated!",
           icon: "success",
         }).then((result) => {
           if (
@@ -120,7 +122,7 @@ const Page = () => {
   return (
     <div className={style.main}>
       <div className={style.form}>
-        <div className={style.title}>Sign Up to Continue</div>
+        <div className={style.title}>Update your Information</div>
         <TextField
           id="outlined-basic"
           label="Name"
@@ -178,24 +180,14 @@ const Page = () => {
             setFormData({ ...formData, address: e.target.value })
           }
         />
-        <TextField
-          type="password"
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.password}
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
-        />
+
         <Button
           variant="contained"
           color="primary"
           style={{ backgroundColor: "purple", marginBottom: "15px" }}
           onClick={handleSubmit}
         >
-          Submit
+          Update
         </Button>
       </div>
     </div>

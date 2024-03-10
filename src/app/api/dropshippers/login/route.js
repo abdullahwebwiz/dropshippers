@@ -1,10 +1,6 @@
 import { mdb_url } from "@/lib/db";
 import { Dropshipper } from "@/lib/model/dropshipper";
 import mongoose from "mongoose";
-import { randomBytes } from "crypto";
-import { join } from "path";
-import { customAlphabet } from "nanoid";
-import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 export const POST = async (req) => {

@@ -1,0 +1,28 @@
+.con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text{
+border: 1px solid red;
+text-align: center;
+}
+.card button {
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+}
