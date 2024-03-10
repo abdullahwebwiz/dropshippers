@@ -12,11 +12,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [shippingLabel, setShippingLabel] = useState(null);
   const [paymentReceipt, setPaymentReceipt] = useState(null);
+  const [productId, setProductId] = useState("");
+  const [quantity, setQuantity] = useState("");
 
   const handleAddOrderClick = () => {
     setIsFormOpen(true);
@@ -28,8 +31,12 @@ const Page = () => {
 
   const handleSubmit = () => {
     // Check if any required fields are empty
-    if (!shippingLabel || !paymentReceipt) {
-      alert("Please upload both files.");
+    if (!shippingLabel || !paymentReceipt || !productId || !quantity) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all fields!",
+      });
       return;
     }
 
@@ -37,6 +44,8 @@ const Page = () => {
     const formData = new FormData();
     formData.append("shippingLabel", shippingLabel);
     formData.append("paymentReceipt", paymentReceipt);
+    formData.append("productId", productId);
+    formData.append("quantity", quantity);
 
     // Send POST request
     fetch("/api/orders/addorders", {
@@ -46,15 +55,27 @@ const Page = () => {
       .then((response) => {
         // Handle response
         if (response.ok) {
-          alert("Order added successfully!");
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Order added successfully!",
+          });
           setIsFormOpen(false);
         } else {
-          alert("Failed to add order. Please try again.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Failed to add order. Please try again.",
+          });
         }
       })
       .catch((error) => {
         console.error("Error adding order:", error);
-        alert("An error occurred. Please try again.");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "An error occurred. Please try again.",
+        });
       });
   };
 
@@ -66,16 +87,18 @@ const Page = () => {
     setPaymentReceipt(event.target.files[0]);
   };
 
+  const handleProductIdChange = (event) => {
+    setProductId(event.target.value);
+  };
+
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+
   return (
     <div>
       <Header />
       <div className={style.con}>
-        <div className={style.card}>
-          <div>Order_ID: 123</div>
-          <div>10 March 2024</div>
-          <div>12:09 PM</div>
-          <Chip label="processing" color="secondary" variant="outlined" />
-        </div>
         <div className={style.card}>
           <div>Order_ID: 123</div>
           <div>10 March 2024</div>
@@ -104,8 +127,26 @@ const Page = () => {
         <DialogTitle>Add Order</DialogTitle>
         <DialogContent>
           <Typography variant="body1">
-            Please upload the following files:
+            Please fill in the following details and upload the files:
           </Typography>
+          <TextField
+            label="Product ID"
+            type="text"
+            fullWidth
+            required
+            value={productId}
+            onChange={handleProductIdChange}
+            margin="normal"
+          />
+          <TextField
+            label="Quantity"
+            type="number"
+            fullWidth
+            required
+            value={quantity}
+            onChange={handleQuantityChange}
+            margin="normal"
+          />
           <TextField
             label="Shipping Label (PDF)"
             type="file"
