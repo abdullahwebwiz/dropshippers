@@ -13,14 +13,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import { format } from "date-fns";
 const Page = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [shippingLabel, setShippingLabel] = useState(null);
   const [paymentReceipt, setPaymentReceipt] = useState(null);
   const [productId, setProductId] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [rows, setrows] = useState(null);
+  const [rows, setRows] = useState(null);
 
   let d_id = Cookies.get("d_id");
 
@@ -30,7 +30,7 @@ const Page = () => {
         .then((response) => response.json())
         .then((data) => {
           setRows(data);
-          console.log(data.length);
+          console.log(data);
         });
     }
   }, [d_id]);
@@ -67,6 +67,7 @@ const Page = () => {
         // Handle response
         if (response.ok) {
           alert("Order added successfully!");
+          location.reload();
           setIsFormOpen(false);
         } else {
           alert("Failed to add order. Please try again.");
@@ -100,16 +101,21 @@ const Page = () => {
       <div className={style.con}>
         {rows && rows.length != 0
           ? rows.map((d, i) => {
+              console.log(d.epoch);
+              const formattedDate = format(
+                parseInt(d.epoch),
+                "dd MMMM yyyy"
+              );
+              const formattedTime = format(
+                parseInt(d.epoch),
+                "hh:mm a"
+              );
               return (
                 <div className={style.card} key={i}>
-                  <div>Order_ID: {rows.o_id}</div>
-                  <div>10 March 2024</div>
-                  <div>12:09 PM</div>
-                  <Chip
-                    label={rows.status}
-                    color="secondary"
-                    variant="outlined"
-                  />
+                  <div>Order_ID: {d.o_id}</div>
+                  <div>{formattedDate}</div>
+                  <div>{formattedTime}</div>
+                  <Chip label={d.status} color="secondary" variant="outlined" />
                 </div>
               );
             })
