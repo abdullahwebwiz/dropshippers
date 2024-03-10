@@ -2,6 +2,7 @@
 import { useState } from "react";
 import style from "./page.module.css";
 import Header from "../../header";
+import Cookies from "js-cookie";
 import {
   Button,
   Chip,
@@ -12,7 +13,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Swal from "sweetalert2";
 
 const Page = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -20,6 +20,8 @@ const Page = () => {
   const [paymentReceipt, setPaymentReceipt] = useState(null);
   const [productId, setProductId] = useState("");
   const [quantity, setQuantity] = useState("");
+
+  let d_id = Cookies.get("d_id");
 
   const handleAddOrderClick = () => {
     setIsFormOpen(true);
@@ -31,12 +33,8 @@ const Page = () => {
 
   const handleSubmit = () => {
     // Check if any required fields are empty
-    if (!shippingLabel || !paymentReceipt || !productId || !quantity) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please fill in all fields!",
-      });
+    if (!shippingLabel || !paymentReceipt || !productId || !quantity || !d_id) {
+      alert("Please fill in all fields.");
       return;
     }
 
@@ -46,36 +44,25 @@ const Page = () => {
     formData.append("paymentReceipt", paymentReceipt);
     formData.append("productId", productId);
     formData.append("quantity", quantity);
+    formData.append("d_id", d_id);
 
     // Send POST request
-    fetch("/api/orders/addorders", {
+    fetch("http://localhost:3000/api/orders/addorder", {
       method: "POST",
       body: formData,
     })
       .then((response) => {
         // Handle response
         if (response.ok) {
-          Swal.fire({
-            icon: "success",
-            title: "Success",
-            text: "Order added successfully!",
-          });
+          alert("Order added successfully!");
           setIsFormOpen(false);
         } else {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Failed to add order. Please try again.",
-          });
+          alert("Failed to add order. Please try again.");
         }
       })
       .catch((error) => {
         console.error("Error adding order:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "An error occurred. Please try again.",
-        });
+        alert("An error occurred. Please try again.");
       });
   };
 
