@@ -22,7 +22,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import SchoolIcon from "@mui/icons-material/School";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import GroupIcon from "@mui/icons-material/Group";
-
+import LockIcon from "@mui/icons-material/Lock";
 const Header = () => {
   const [name, setName] = useState("");
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -76,6 +76,7 @@ const Header = () => {
       link: "/dashboard/wholesale",
     },
     { text: "Services", icon: <GroupIcon />, link: "/dashboard/services" },
+    { text: "Logout", icon: <LockIcon />, link: "/dashboard/logout" },
   ];
 
   return (
