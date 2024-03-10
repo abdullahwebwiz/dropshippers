@@ -1,5 +1,5 @@
 import { mdb_url } from "@/lib/db";
-import { generalOrder } from "@/lib/model/generalorders";
+import { generalOrder } from "@/lib/model/generalorder";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 

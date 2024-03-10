@@ -1,5 +1,5 @@
 import { mdb_url } from "@/lib/db";
-import { generalOrder } from "@/lib/model/generalorders";
+import { generalOrder } from "@/lib/model/generalorder";
 import mongoose from "mongoose";
 import { randomBytes } from "crypto";
 import { join } from "path";
@@ -15,14 +15,8 @@ export const POST = async (req) => {
     const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
     let o_id = nanoid();
     const currentEpochTime = Date.now();
-    console.log(c_id);
-    console.log(productId);
-    console.log(quantity);
-    console.log(d_id);
-    console.log(o_id);
-    console.log(currentEpochTime);
 
-    const generalOrder = new generalOrder({
+    const generalorder = new generalOrder({
       o_id: o_id,
       d_id: d_id,
       c_id: c_id,
@@ -31,7 +25,8 @@ export const POST = async (req) => {
       epoch: currentEpochTime,
       status: "processing",
     });
-    await generalOrder.save();
+    await generalorder.save();
+
     return NextResponse.json({ msg: "success" });
   } catch (error) {
     console.log(error);

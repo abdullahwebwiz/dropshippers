@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import style from "./page.module.css";
 import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
-import Cookies from "js-cookie";
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -32,17 +32,6 @@ const Page = () => {
     password: "",
   });
   const router = useRouter();
-  const d_id = Cookies.get("d_id");
-
-  React.useEffect(() => {
-    if (d_id) {
-      fetch("http://localhost:3000/api/dropshippers/getdropshipper/" + d_id)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-    }
-  }, [d_id]);
 
   const handleSubmit = async () => {
     const { name, phone, province, city, address, password } = formData;

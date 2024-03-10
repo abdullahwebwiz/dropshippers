@@ -6,8 +6,7 @@ const generalOrderModel = new mongoose.Schema({
   c_id: String,
   p_id: String,
   p_quantity: String,
-  date: String,
-  time: String,
+  epoch: String,
   status: String,
 });
 
