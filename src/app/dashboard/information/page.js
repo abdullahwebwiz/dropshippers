@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import style from "./page.module.css";
+import Header from "../header";
 import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -81,7 +82,6 @@ const Page = () => {
       console.log(response);
       console.log(result);
       if (result.msg == "success") {
-
         Swal.fire({
           title: "Form Submitted",
           text: "Your information is successfully Updated!",
@@ -120,77 +120,83 @@ const Page = () => {
   };
 
   return (
-    <div className={style.main}>
-      <div className={style.form}>
-        <div className={style.title}>Update your Information</div>
-        <TextField
-          id="outlined-basic"
-          label="Name"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Phone"
-          placeholder="03000000000"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-        />
-        <TextField
-          id="outlined-select-province"
-          select
-          label="Province"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.province}
-          onChange={handleProvinceChange}
-        >
-          {data1.provinces.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.name}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="outlined-select-city"
-          select
-          label="City"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.city}
-          onChange={handleCityChange}
-        >
-          {data1[formData.province]?.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="outlined-basic"
-          label="Address"
-          variant="outlined"
-          style={{ width: "95%" }}
-          value={formData.address}
-          onChange={(e) =>
-            setFormData({ ...formData, address: e.target.value })
-          }
-        />
+    <>
+      {" "}
+      <Header />
+      <div className={style.main}>
+        <div className={style.form}>
+          <div className={style.title}>Update your Information</div>
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Phone"
+            placeholder="03000000000"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+          />
+          <TextField
+            id="outlined-select-province"
+            select
+            label="Province"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.province}
+            onChange={handleProvinceChange}
+          >
+            {data1.provinces.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="outlined-select-city"
+            select
+            label="City"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.city}
+            onChange={handleCityChange}
+          >
+            {data1[formData.province]?.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="outlined-basic"
+            label="Address"
+            variant="outlined"
+            style={{ width: "95%" }}
+            value={formData.address}
+            onChange={(e) =>
+              setFormData({ ...formData, address: e.target.value })
+            }
+          />
 
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ backgroundColor: "purple", marginBottom: "15px" }}
-          onClick={handleSubmit}
-        >
-          Update
-        </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: "purple", marginBottom: "15px" }}
+            onClick={handleSubmit}
+          >
+            Update
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

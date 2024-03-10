@@ -23,6 +23,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import GroupIcon from "@mui/icons-material/Group";
 import LockIcon from "@mui/icons-material/Lock";
+import CategoryIcon from '@mui/icons-material/Category';
 const Header = () => {
   const [name, setName] = useState("");
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -47,7 +48,7 @@ const Header = () => {
 
   const menuItems = [
     { text: "Orders", icon: <ShoppingCartIcon />, link: "/dashboard/orders" },
-    { text: "Products", icon: <ShoppingCartIcon />, link: "/dashboard/products" },
+    { text: "Products", icon: <CategoryIcon />, link: "/dashboard/products" },
     { text: "Customers", icon: <PeopleIcon />, link: "/dashboard/customers" },
     { text: "Information", icon: <InfoIcon />, link: "/dashboard/information" },
     {
