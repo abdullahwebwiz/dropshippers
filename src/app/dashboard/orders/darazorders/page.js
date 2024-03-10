@@ -26,7 +26,7 @@ const Page = () => {
 
   React.useEffect(() => {
     if (d_id) {
-      fetch("http://localhost:3000/api/orders/getorders/" + d_id)
+      fetch("http://localhost:3000/api/darazorders/getorders/" + d_id) 
         .then((response) => response.json())
         .then((data) => {
           setRows(data);
@@ -59,7 +59,7 @@ const Page = () => {
     formData.append("d_id", d_id);
 
     // Send POST request
-    fetch("http://localhost:3000/api/orders/addorder", {
+    fetch("http://localhost:3000/api/darazorders/addorder", {
       method: "POST",
       body: formData,
     })
