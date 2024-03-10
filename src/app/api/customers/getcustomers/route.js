@@ -17,3 +17,4 @@ export const GET = async (req, content) => {
     return NextResponse.json(result);
   }
 };
+

@@ -1,0 +1,19 @@
+.con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.card {
+  width: 200px;
+  height: 240px;
+  outline: 3px solid #a020f0;
+  margin: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}

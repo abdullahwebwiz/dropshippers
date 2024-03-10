@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import style from "./page.module.css";
 import Cookies from "js-cookie";
@@ -45,16 +46,36 @@ const Header = () => {
   };
 
   const menuItems = [
-    { text: "Orders", icon: <ShoppingCartIcon />,link:'/dashboard/orders' },
-    { text: "Customers", icon: <PeopleIcon />,link:'/dashboard/customers' },
-    { text: "Information", icon: <InfoIcon />,link:'/dashboard/information' },
-    { text: "Notification", icon: <NotificationsIcon />,link:'/dashboard/notifications' },
-    { text: "Profit Calculator", icon: <MonetizationOnIcon />,link:'/dashboard/orders' },
-    { text: "Tutorials", icon: <SchoolIcon /> },
-    { text: "Finance", icon: <AccountBalanceIcon /> },
-    { text: "Contact", icon: <ContactSupportIcon /> },
-    { text: "Wholesale", icon: <AssignmentIcon /> },
-    { text: "Services", icon: <GroupIcon /> },
+    { text: "Orders", icon: <ShoppingCartIcon />, link: "/dashboard/orders" },
+    { text: "Customers", icon: <PeopleIcon />, link: "/dashboard/customers" },
+    { text: "Information", icon: <InfoIcon />, link: "/dashboard/information" },
+    {
+      text: "Notification",
+      icon: <NotificationsIcon />,
+      link: "/dashboard/notifications",
+    },
+    {
+      text: "Profit Calculator",
+      icon: <MonetizationOnIcon />,
+      link: "https://app.jarvis.pk/calculator",
+    },
+    { text: "Tutorials", icon: <SchoolIcon />, link: "/dashboard/tutorials" },
+    {
+      text: "Finance",
+      icon: <AccountBalanceIcon />,
+      link: "/dashboard/finance",
+    },
+    {
+      text: "Contact",
+      icon: <ContactSupportIcon />,
+      link: "/dashboard/contact",
+    },
+    {
+      text: "Wholesale",
+      icon: <AssignmentIcon />,
+      link: "/dashboard/wholesale",
+    },
+    { text: "Services", icon: <GroupIcon />, link: "/dashboard/services" },
   ];
 
   return (
@@ -77,10 +98,12 @@ const Header = () => {
         >
           <List>
             {menuItems.map((item, index) => (
-              <ListItem button key={index}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItem>
+              <Link href={item.link} key={index}>
+                <ListItem button>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              </Link>
             ))}
           </List>
         </div>
