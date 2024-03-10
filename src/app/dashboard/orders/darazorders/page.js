@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import style from "./page.module.css";
 import Header from "../../header";
 import Cookies from "js-cookie";
@@ -20,8 +20,20 @@ const Page = () => {
   const [paymentReceipt, setPaymentReceipt] = useState(null);
   const [productId, setProductId] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [rows, setrows] = useState(null);
 
   let d_id = Cookies.get("d_id");
+
+  React.useEffect(() => {
+    if (d_id) {
+      fetch("http://localhost:3000/api/orders/getorders/" + d_id)
+        .then((response) => response.json())
+        .then((data) => {
+          setRows(data);
+          console.log(data.length);
+        });
+    }
+  }, [d_id]);
 
   const handleAddOrderClick = () => {
     setIsFormOpen(true);
@@ -86,24 +98,22 @@ const Page = () => {
     <div>
       <Header />
       <div className={style.con}>
-        <div className={style.card}>
-          <div>Order_ID: 123</div>
-          <div>10 March 2024</div>
-          <div>12:09 PM</div>
-          <Chip label="processing" color="secondary" variant="outlined" />
-        </div>{" "}
-        <div className={style.card}>
-          <div>Order_ID: 123</div>
-          <div>10 March 2024</div>
-          <div>12:09 PM</div>
-          <Chip label="processing" color="secondary" variant="outlined" />
-        </div>{" "}
-        <div className={style.card}>
-          <div>Order_ID: 123</div>
-          <div>10 March 2024</div>
-          <div>12:09 PM</div>
-          <Chip label="processing" color="secondary" variant="outlined" />
-        </div>{" "}
+        {rows && rows.length != 0
+          ? rows.map((d, i) => {
+              return (
+                <div className={style.card} key={i}>
+                  <div>Order_ID: {rows.o_id}</div>
+                  <div>10 March 2024</div>
+                  <div>12:09 PM</div>
+                  <Chip
+                    label={rows.status}
+                    color="secondary"
+                    variant="outlined"
+                  />
+                </div>
+              );
+            })
+          : "No Orders Or some error"}
       </div>
       <div style={{ marginTop: "10px", textAlign: "center" }}>
         <Button variant="contained" onClick={handleAddOrderClick}>
