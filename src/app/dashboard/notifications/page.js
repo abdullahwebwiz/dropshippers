@@ -3,6 +3,7 @@ import style from "./page.module.css";
 import Header from "../header";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 const Page = () => {
   let [rows, setrows] = useState();
   useEffect(() => {
@@ -22,12 +23,17 @@ const Page = () => {
           ? rows.map((d, i) => {
               return (
                 <div className={style.card} key={i}>
-                  <div className={style.text}>
-                    Hi kia haal hawal janab saal kamranf. nbrwdd
-                  </div>
-                  <Button variant="contained" size="small">
-                    Learn More
-                  </Button>
+                  <div className={style.text}>{d.text}</div>
+                  <Link
+                    href={d.link}
+                    target="_blank"
+                    style={{ color: "white" }}
+                  >
+                    {" "}
+                    <Button variant="contained" size="small">
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               );
             })
