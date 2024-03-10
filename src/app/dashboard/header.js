@@ -47,6 +47,7 @@ const Header = () => {
 
   const menuItems = [
     { text: "Orders", icon: <ShoppingCartIcon />, link: "/dashboard/orders" },
+    { text: "Products", icon: <ShoppingCartIcon />, link: "/dashboard/products" },
     { text: "Customers", icon: <PeopleIcon />, link: "/dashboard/customers" },
     { text: "Information", icon: <InfoIcon />, link: "/dashboard/information" },
     {
@@ -58,6 +59,7 @@ const Header = () => {
       text: "Profit Calculator",
       icon: <MonetizationOnIcon />,
       link: "https://app.jarvis.pk/calculator",
+      blank: true,
     },
     { text: "Tutorials", icon: <SchoolIcon />, link: "/dashboard/tutorials" },
     {
@@ -68,14 +70,15 @@ const Header = () => {
     {
       text: "Contact",
       icon: <ContactSupportIcon />,
-      link: "/dashboard/contact",
+      link: "https://wa.me/message/NHX4OKHRYJEUK1",
+      blank: true,
     },
     {
       text: "Wholesale",
       icon: <AssignmentIcon />,
       link: "/dashboard/wholesale",
     },
-    { text: "Services", icon: <GroupIcon />, link: "/dashboard/services" },
+    { text: "Services", icon: <GroupIcon />, link: "/dashboard/servicespage" },
     { text: "Logout", icon: <LockIcon />, link: "/dashboard/logout" },
   ];
 
@@ -99,7 +102,11 @@ const Header = () => {
         >
           <List>
             {menuItems.map((item, index) => (
-              <Link href={item.link} key={index}>
+              <Link
+                href={item.link}
+                key={index}
+                target={item.blank ? "_blank" : "_self"}
+              >
                 <ListItem button>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
