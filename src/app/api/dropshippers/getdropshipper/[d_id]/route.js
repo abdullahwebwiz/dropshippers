@@ -9,6 +9,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 export const GET = async (req, content) => {
   let d_id = content.params.d_id;
+  console.log('KKKKKKKKKKK!!!!');
   try {
     await mongoose.connect(mdb_url);
     let result = await Dropshipper.findOne({ d_id: d_id });
