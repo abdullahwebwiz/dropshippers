@@ -10,7 +10,6 @@ import { NextResponse } from "next/server";
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
-
     let payload = await req.formData();
     const {
       name,

@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 const darazOrderModel = new mongoose.Schema({
   o_id: String,
   d_id: String,
-  date: String,
-  time: String,
+  epoch: String,
   status: String,
 });
 
