@@ -33,10 +33,19 @@
 .vidcon button {
   margin: 5px;
 }
-.cat{
-font-size: 20px;
-color: #f85606;
+.cat {
+  font-size: 20px;
+  color: #f85606;
 }
-.des{
-    text-align: center;
+.des {
+  text-align: center;
+}
+.imgcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.imgcon image {
+  margin: 10px;
 }

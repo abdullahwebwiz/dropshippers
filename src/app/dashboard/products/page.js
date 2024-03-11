@@ -13,6 +13,7 @@ const Page = () => {
   let [des, setDes] = useState("");
   let [cat, setCat] = useState("");
   let [video, setvideo] = useState("");
+  let [pid, setpid] = useState("");
 
   React.useEffect(() => {
     fetch("http://localhost:3000/api/products/getproducts")
@@ -23,16 +24,14 @@ const Page = () => {
       });
   }, []);
 
-
-  // const handleDownload = () => {
-  //   const link = document.createElement('a');
-  //   link.href = `data:image/png;base64,${imageData}`;
-  //   link.download = `${name}.png`;
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
-
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = `data:image/png;base64,${imageData}`;
+    link.download = `${name}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -49,6 +48,7 @@ const Page = () => {
                     onClick={() => {
                       setDes(d.Description);
                       setvideo(d.video);
+                      setpid(d.p_id);
                       setCat(d.category ? d.category : "No category");
                     }}
                   >
@@ -72,6 +72,7 @@ const Page = () => {
           description={des}
           category={cat}
           video={video}
+          pid={pid}
           close={() => setDes("")}
         />
       ) : (

@@ -25,7 +25,6 @@ const MyImage = ({ folder, name, width, height, alt, style }) => {
           width={width}
           height={height}
           alt={alt}
-          style={style}
         />
       ) : (
         ""

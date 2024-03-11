@@ -21,12 +21,6 @@ const ProductCard = ({ image, title, price, productId, category, status }) => {
           width={200}
           height={200}
           alt={"my image"}
-          style={{
-            transition: "0.3s linear all",
-            ":hover": {
-              transform: "scale(1.1)", // Apply scale transformation on hover
-            },
-          }}
         />
       </div>
       <div className={style.info}>

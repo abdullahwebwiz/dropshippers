@@ -3,7 +3,8 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { Button } from "@mui/material";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import Link from "next/link";
-const Popup1 = ({ category, description, video,close }) => {
+import MyImage from "../myimage/myimage";
+const Popup1 = ({ category, description, video, close, pid }) => {
   return (
     <div className={style.main}>
       <div className={style.con}>
@@ -22,12 +23,21 @@ const Popup1 = ({ category, description, video,close }) => {
               color="error"
             >
               {" "}
-              Video {" "}
+              Video{" "}
             </Button>
           </Link>
           <Button variant="contained" color="success" onClick={close}>
             Close
           </Button>
+          <div className={style.imgcon}>
+            <MyImage
+              folder={"productimages"}
+              name={pid + "0" + ".png"}
+              width={200}
+              height={200}
+              alt={"my img"}
+            />
+          </div>
         </div>
       </div>
     </div>
