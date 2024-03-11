@@ -6,7 +6,6 @@ import { join } from "path";
 import { customAlphabet } from "nanoid";
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
-
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);

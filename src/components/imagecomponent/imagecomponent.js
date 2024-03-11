@@ -1,15 +1,17 @@
 import Image from 'next/image';
 const ImageComponent = ({ imageName }) => {
-  // Dynamically import the image
-  const importImage = async (imageName) => {
+
+
+  const importImage = async (x) => {
     try {
-      const { default: image } = await import(`../../productimages/${imageName}.png`);
+      const { default: image } = await import(`../../productimages/${'5nyjdxaheb0'}.png`);
       return image;
     } catch (error) {
-      console.error(`Failed to import image ${imageName}:`, error);
+      console.error(`Failed to import image ${x}:`, error);
       return null;
     }
   };
+  
 
   return (
     <div>

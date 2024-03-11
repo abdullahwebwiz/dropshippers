@@ -4,7 +4,8 @@ import Header from "../header";
 import style from "./page.module.css";
 import React, { useState } from "react";
 import ProductCard from "@/components/productcard/productcard";
-import ImageComponent from "@/components/imagecomponent/imagecomponent";
+import x from "../../../productimages/5nyjdxaheb0.png";
+import Image from "next/image";
 const Page = () => {
   let [rows, setRows] = useState(null);
 
@@ -16,13 +17,14 @@ const Page = () => {
         console.log(data);
       });
   }, []);
-  const imageArray = ["5nyjdxaheb0", "7kyfno2ai80", "7kyfno2ai81"];
   return (
     <div>
       <Header />
       <Space />
       <div className={style.con}>
-        <ImageComponent imageName={imageArray} />;
+        <img
+          src={"../../../productimages/5nyjdxaheb0.png"}
+        />
       </div>
     </div>
   );
