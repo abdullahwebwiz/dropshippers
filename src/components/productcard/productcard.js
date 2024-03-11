@@ -1,11 +1,19 @@
 import style from "./productcard.module.css";
 import MyImage from "../myimage/myimage";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { IconButton } from "@mui/material";
+import { Chip, IconButton } from "@mui/material";
+import { copy } from "clipboard";
 const ProductCard = ({ image, title, price, productId, category, status }) => {
   return (
     <div className={style.card}>
-      <div className={style.status}>{status}</div>
+      <Chip
+        variant="outlined"
+        className={style.status}
+        color={status == "active" ? "success" : "warning"}
+        size="small"
+        label={status == "active" ? "Active" : "Unavailable"}
+      />
+
       <div className={style.imgcon}>
         <MyImage
           name={image}
@@ -13,18 +21,25 @@ const ProductCard = ({ image, title, price, productId, category, status }) => {
           width={200}
           height={200}
           alt={"my image"}
-          style={{ border: "2px solid green" }}
+          style={{
+            transition: "0.3s linear all",
+            ":hover": {
+              transform: "scale(1.1)", // Apply scale transformation on hover
+            },
+          }}
         />
       </div>
-      <div className={style.title}>{category}</div>
-      <div className={style.title}>{title}</div>
-      <div className={style.title}>{"PKR " + price}</div>
-      <div className={style.title}>{"ID# " + productId}</div>
-
+      <div className={style.info}>
+        {" "}
+        <div className={style.title}>{title}</div>
+        <div className={style.price}>{"PKR " + price}</div>
+        <div className={style.pid}>{"ID: " + " " + productId}</div>
+      </div>
       <IconButton
         aria-label="copy"
+        className={style.copy}
         onClick={() => {
-          copy("03274996979");
+          copy(productId);
           alert("Copied!");
         }}
       >
