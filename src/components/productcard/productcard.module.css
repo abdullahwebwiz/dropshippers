@@ -1,0 +1,16 @@
+.card {
+  width: 250px;
+  position: relative;
+  box-shadow: 1px 1px 5px black;
+  margin: 5px;
+}
+.imgcon{
+width: 100%;
+border: 2px solid red;
+text-align: center;
+}
+.status{
+position: absolute;
+top: 3px;
+right: 3px;
+}

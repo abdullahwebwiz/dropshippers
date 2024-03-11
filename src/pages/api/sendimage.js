@@ -2,19 +2,14 @@ import fs from "fs";
 import path from "path";
 
 export default function handler(req, res) {
-  const { imagename } = req.query;
+  const { imagename, folder } = req.query;
 
   if (!imagename) {
     res.status(400).end("Image name not provided");
     return;
   }
 
-  const imagePath = path.join(
-    process.cwd(),
-    "src",
-    "productimages",
-    imagename
-  );
+  const imagePath = path.join(process.cwd(), "src", folder, imagename);
 
   fs.readFile(imagePath, (err, data) => {
     if (err) {
@@ -23,7 +18,7 @@ export default function handler(req, res) {
       return;
     }
 
-    console.log('Image successfully read:', imagename);
+    console.log("Image successfully read:", imagename);
     res.setHeader("Content-Type", "image/png");
     res.end(data);
   });

@@ -5,6 +5,7 @@ export default function Page() {
     <div>
       <h1>About Page</h1>
       <MyImage
+        folder={"productimages"}
         name={"fi7tszx3k40.png"}
         width={100}
         height={100}
