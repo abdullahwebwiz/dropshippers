@@ -16,7 +16,7 @@ const Page = () => {
   let [rows, setRows] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/dropshippers/getdropshippers")
+    fetch("http://localhost:3000/api/generalorders/getordersall")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -32,15 +32,18 @@ const Page = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Province</TableCell>
-                <TableCell>City</TableCell>
-                <TableCell>Address</TableCell>
+                <TableCell>DropShipper ID</TableCell>
+                <TableCell>Customer ID</TableCell>
+                <TableCell>Product</TableCell>
+                <TableCell>Quantity</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Time</TableCell>
+                <TableCell></TableCell>
+                <TableCell>Time</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows &&
+              {false &&
                 rows.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell>{row.name}</TableCell>
