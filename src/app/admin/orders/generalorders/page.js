@@ -11,6 +11,9 @@ import {
   TableRow,
   Paper,
 } from "@mui/material"; // Import MUI components
+import { format } from "date-fns";
+// import Button from "@mui/material";
+import {Button} from "@mui/material";
 
 const Page = () => {
   let [rows, setRows] = useState(null);
@@ -38,19 +41,27 @@ const Page = () => {
                 <TableCell>Quantity</TableCell>
                 <TableCell>Date</TableCell>
                 <TableCell>Time</TableCell>
-                <TableCell></TableCell>
-                <TableCell>Time</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Update Status</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {false &&
+              {rows &&
                 rows.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.phone}</TableCell>
-                    <TableCell>{row.province}</TableCell>
-                    <TableCell>{row.city}</TableCell>
-                    <TableCell>{row.address}</TableCell>
+                    <TableCell>{row.d_id}</TableCell>
+                    <TableCell>{row.c_id}</TableCell>
+                    <TableCell>{row.p_id}</TableCell>
+                    <TableCell>{row.p_quantity}</TableCell>
+                    <TableCell>
+                      {format(new Date(Number(row.epoch)), "MM/dd/yyyy")}
+                    </TableCell>
+                    <TableCell>
+                      {format(new Date(Number(row.epoch)), "hh:mm a")}
+                    </TableCell>
+                    <TableCell>{row.status}</TableCell>
+                    <TableCell>
+                        <Button variant="contained" color="primary">Update</Button></TableCell>
                   </TableRow>
                 ))}
             </TableBody>
