@@ -10,9 +10,15 @@ const MyImage = ({ folder, name, width, height, alt, style }) => {
       const res = await fetch(
         `http://localhost:3000/api/sendimage?imagename=${name}&folder=${folder}`
       );
-      const imageBuffer = await res.arrayBuffer();
-      const base64 = Buffer.from(imageBuffer).toString("base64");
-      setImageData(base64);
+      console.log(res);
+      if (res.ok) {
+        const imageBuffer = await res.arrayBuffer();
+
+        const base64 = Buffer.from(imageBuffer).toString("base64");
+        setImageData(base64);
+      } else {
+        setImageData(null);
+      }
     }
     getImage();
   }, []);

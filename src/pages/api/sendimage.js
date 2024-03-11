@@ -31,7 +31,7 @@ export default function handler(req, res) {
   const { imagename, folder } = req.query;
 
   if (!imagename || !folder) {
-    res.status(400).end("Image name or folder not provided");
+    res.status(400).end("FAILED");
     return;
   }
 
@@ -41,7 +41,7 @@ export default function handler(req, res) {
   fs.access(imagePath, fs.constants.F_OK, (err) => {
     if (err) {
       console.error("Error accessing image:", err);
-      res.status(404).end("Image not found");
+      res.status(404).end("FAILED");
       return;
     }
 
@@ -49,7 +49,7 @@ export default function handler(req, res) {
     fs.readFile(imagePath, (readErr, data) => {
       if (readErr) {
         console.error("Error reading image:", readErr);
-        res.status(500).end("Internal Server Error");
+        res.status(500).end("FAILED");
         return;
       }
 
