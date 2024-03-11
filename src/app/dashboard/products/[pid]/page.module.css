@@ -1,0 +1,46 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+.con {
+  width: 90%;
+  height: 100vh;
+  background-color: #f5b290;
+  padding: 30px;
+}
+.con div {
+  margin: 10px;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #a020f0;
+}
+.cat {
+  background-color: #f85606;
+  border-radius: 40px;
+  padding: 5px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline;
+}
+.des {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+}
+.price {
+  font-weight: 900;
+}
+.video {
+  color: #0094b7;
+  text-decoration: underline;
+}
+.imgcon {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

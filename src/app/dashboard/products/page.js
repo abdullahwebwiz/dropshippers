@@ -8,6 +8,8 @@ import x from "../../../productimages/5nyjdxaheb0.png";
 import Image from "next/image";
 import MyImage from "@/components/myimage/myimage";
 import Popup1 from "@/components/popup1/popup1";
+import { useRouter } from "next/navigation";
+
 const Page = () => {
   let [rows, setRows] = useState(null);
   let [des, setDes] = useState("");
@@ -24,14 +26,7 @@ const Page = () => {
       });
   }, []);
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = `data:image/png;base64,${imageData}`;
-    link.download = `${name}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  let router = useRouter();
 
   return (
     <>
@@ -46,10 +41,7 @@ const Page = () => {
                   <span
                     key={d.p_id}
                     onClick={() => {
-                      setDes(d.Description);
-                      setvideo(d.video);
-                      setpid(d.p_id);
-                      setCat(d.category ? d.category : "No category");
+                      router.push("/dashboard/products/" + d.p_id);
                     }}
                   >
                     {" "}
@@ -67,17 +59,6 @@ const Page = () => {
             : ""}
         </div>
       </div>
-      {des ? (
-        <Popup1
-          description={des}
-          category={cat}
-          video={video}
-          pid={pid}
-          close={() => setDes("")}
-        />
-      ) : (
-        ""
-      )}
     </>
   );
 };

@@ -21,6 +21,7 @@ const ProductCard = ({ image, title, price, productId, category, status }) => {
           width={200}
           height={200}
           alt={"my image"}
+          download={false}
         />
       </div>
       <div className={style.info}>
