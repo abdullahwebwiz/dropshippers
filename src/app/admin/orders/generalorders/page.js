@@ -36,7 +36,7 @@ const Page = () => {
 
   return (
     <div className={style.container}>
-      f<AdminSideBar />
+      <AdminSideBar />
       <div className={style.main}>
         <TableContainer component={Paper}>
           <Table>

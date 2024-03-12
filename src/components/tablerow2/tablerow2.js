@@ -4,16 +4,8 @@ import { TableRow, TableCell } from "@mui/material";
 import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
+const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
-  let [customer, setcustomer] = useState(null);
-
-  useEffect(() => {
-    if ((product, customer)) {
-      console.log(product);
-      console.log(customer);
-    }
-  }, [product, customer]);
 
   useEffect(() => {
     if (pid) {
@@ -25,39 +17,16 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
     }
   }, [pid]);
 
-  useEffect(() => {
-    if (cid) {
-      fetch("http://localhost:3000/api/customers/getcustomer/" + cid)
-        .then((response) => response.json())
-        .then((data) => {
-          setcustomer(data);
-        });
-    }
-  }, [cid]);
-
   const handlealert = (x) => {
-    if ((customer, product)) {
-      if (x == "p") {
-        Swal.fire({
-          title: "Product Information",
-          html: `Product ID: ${product.p_id}<br>
+    if (product && x == "p") {
+      Swal.fire({
+        title: "Product Information",
+        html: `Product ID: ${product.p_id}<br>
            Product: ${product.title}<br>
            Price: ${product.price}`,
-          icon: "info",
-          confirmButtonText: "Close",
-        });
-      } else if (x == "c") {
-        Swal.fire({
-          title: "Dropshipper Information",
-          html: `Customer ID: ${customer.c_id}<br>
-           Customer Name: ${customer.name}<br>
-           Phone: ${customer.phone}<br>
-           City: ${customer.city}<br>
-           Address: ${customer.address}`,
-          icon: "info",
-          confirmButtonText: "Close",
-        });
-      }
+        icon: "info",
+        confirmButtonText: "Close",
+      });
     }
   };
 
@@ -124,4 +93,4 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
     </>
   );
 };
-export default TableRow1;
+export default TableRow2;
