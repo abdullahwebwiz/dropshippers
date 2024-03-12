@@ -15,6 +15,7 @@ import { format } from "date-fns";
 // import Button from "@mui/material";
 import { Button } from "@mui/material";
 import TableRow1 from "@/components/tablerow1/tablerow1";
+import TableRow2 from "@/components/tablerow2/tablerow2";
 
 const Page = () => {
   let [rows, setRows] = useState(null);
@@ -51,13 +52,14 @@ const Page = () => {
             <TableBody>
               {rows &&
                 rows.map((row, index) => (
-                  <TableRow1
+                  <TableRow2
                     oid={row.o_id}
                     did={row.d_id}
                     pid={row.p_id}
                     epoch={row.epoch}
                     status={row.status}
                     quantity={row.p_quantity}
+                    key={index}
                   />
                 ))}
             </TableBody>

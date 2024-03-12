@@ -4,9 +4,15 @@ import { TableRow, TableCell } from "@mui/material";
 import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import MyImage from "../myimage/myimage";
 const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
-
+  let [showpay, setshowpay] = useState(false);
+  
+  useEffect(() => {
+    console.log(oid);
+  }, []);
+  
   useEffect(() => {
     if (pid) {
       fetch("http://localhost:3000/api/products/getproduct/" + pid)
@@ -77,7 +83,8 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
       {did && product ? (
         <TableRow>
           <TableCell>{did}</TableCell>
-          <TableCell onClick={() => handlealert("c")}>{cid}</TableCell>
+          <TableCell>Download label</TableCell>
+          <TableCell onClick={() => setshowpay(true)}>View Payment</TableCell>
           <TableCell onClick={() => handlealert("p")}>
             {product.title}
           </TableCell>
@@ -93,4 +100,5 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
     </>
   );
 };
+
 export default TableRow2;
