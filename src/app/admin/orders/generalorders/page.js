@@ -13,11 +13,12 @@ import {
 } from "@mui/material"; // Import MUI components
 import { format } from "date-fns";
 // import Button from "@mui/material";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 
 const Page = () => {
   let [rows, setRows] = useState(null);
-
+  
+//___________________________________________________________________________
   useEffect(() => {
     fetch("http://localhost:3000/api/generalorders/getordersall")
       .then((response) => response.json())
@@ -27,9 +28,19 @@ const Page = () => {
       });
   }, []);
 
+//___________________________________________________________________________
+//___________________________________________________________________________
+//___________________________________________________________________________
+//___________________________________________________________________________
+
+
+
+
+
+
   return (
     <div className={style.container}>
-      <AdminSideBar />
+      f<AdminSideBar />
       <div className={style.main}>
         <TableContainer component={Paper}>
           <Table>
@@ -61,7 +72,10 @@ const Page = () => {
                     </TableCell>
                     <TableCell>{row.status}</TableCell>
                     <TableCell>
-                        <Button variant="contained" color="primary">Update</Button></TableCell>
+                      <Button variant="contained" color="primary">
+                        Update
+                      </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
