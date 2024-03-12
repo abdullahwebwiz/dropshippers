@@ -14,11 +14,12 @@ import {
 import { format } from "date-fns";
 // import Button from "@mui/material";
 import { Button } from "@mui/material";
+import TableRow1 from "@/components/tablerow1/tablerow1";
 
 const Page = () => {
   let [rows, setRows] = useState(null);
-  
-//___________________________________________________________________________
+
+  //___________________________________________________________________________
   useEffect(() => {
     fetch("http://localhost:3000/api/generalorders/getordersall")
       .then((response) => response.json())
@@ -28,15 +29,10 @@ const Page = () => {
       });
   }, []);
 
-//___________________________________________________________________________
-//___________________________________________________________________________
-//___________________________________________________________________________
-//___________________________________________________________________________
-
-
-
-
-
+  //___________________________________________________________________________
+  //___________________________________________________________________________
+  //___________________________________________________________________________
+  //___________________________________________________________________________
 
   return (
     <div className={style.container}>
@@ -59,24 +55,15 @@ const Page = () => {
             <TableBody>
               {rows &&
                 rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{row.d_id}</TableCell>
-                    <TableCell>{row.c_id}</TableCell>
-                    <TableCell>{row.p_id}</TableCell>
-                    <TableCell>{row.p_quantity}</TableCell>
-                    <TableCell>
-                      {format(new Date(Number(row.epoch)), "MM/dd/yyyy")}
-                    </TableCell>
-                    <TableCell>
-                      {format(new Date(Number(row.epoch)), "hh:mm a")}
-                    </TableCell>
-                    <TableCell>{row.status}</TableCell>
-                    <TableCell>
-                      <Button variant="contained" color="primary">
-                        Update
-                      </Button>
-                    </TableCell>
-                  </TableRow>
+                  <TableRow1
+                  oid={row.o_id}
+                    did={row.d_id}
+                    pid={row.p_id}
+                    cid={row.c_id}
+                    epoch={row.epoch}
+                    status={row.status}
+                    quantity={row.p_quantity}
+                  />
                 ))}
             </TableBody>
           </Table>
