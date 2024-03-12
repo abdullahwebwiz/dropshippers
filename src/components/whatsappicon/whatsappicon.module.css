@@ -1,9 +1,11 @@
+
 .img {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   animation: shake 0.5s infinite alternate;
   animation-delay: 2s;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
   cursor: pointer;
 }
 @keyframes shake {

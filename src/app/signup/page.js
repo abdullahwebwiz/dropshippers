@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import style from "./page.module.css";
 import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
-import Cookies from "js-cookie";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
