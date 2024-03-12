@@ -2,19 +2,34 @@
 import MyImage from "@/components/myimage/myimage";
 import { useState } from "react";
 export default function Page() {
-  let [download, setdownload] = useState(false);
+  // In your component or page in the frontend
+  async function fetchAndDownloadPDF() {
+    try {
+      const response = await fetch("/api/sendpdf?imagename=0trbp1mda20");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "myfile.pdf";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error fetching PDF:", error);
+    }
+  }
+
   return (
     <div>
-      <div onClick={() => setdownload(true)}>About</div>
-      <MyImage
-        folder={"productimages"}
-        name={"5nyjdxaheb0" + ".png"}
-        width={200}
-        height={200}
-        alt={"my img"}
-        download={download}
-        downname={'1'}
-      />
+      <div
+        onClick={() => {
+          alert();
+          fetchAndDownloadPDF();
+        }}
+      >
+        About
+      </div>
     </div>
   );
 }

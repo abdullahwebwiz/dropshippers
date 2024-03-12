@@ -8,11 +8,11 @@ import MyImage from "../myimage/myimage";
 const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
   let [showpay, setshowpay] = useState(false);
-  
+
   useEffect(() => {
     console.log(oid);
   }, []);
-  
+
   useEffect(() => {
     if (pid) {
       fetch("http://localhost:3000/api/products/getproduct/" + pid)
@@ -78,12 +78,29 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
     });
   };
 
+  async function fetchAndDownloadPDF() {
+    try {
+      const response = await fetch("/api/sendpdf?imagename=" + oid);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "myfile.pdf";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error fetching PDF:", error);
+    }
+  }
+
   return (
     <>
       {did && product ? (
         <TableRow>
           <TableCell>{did}</TableCell>
-          <TableCell>Download label</TableCell>
+          <TableCell onClick={fetchAndDownloadPDF}>Download label</TableCell>
           <TableCell onClick={() => setshowpay(true)}>View Payment</TableCell>
           <TableCell onClick={() => handlealert("p")}>
             {product.title}
@@ -94,6 +111,35 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
           <TableCell>{status}</TableCell>
           <TableCell onClick={UpdateStatus}>Update</TableCell>
         </TableRow>
+      ) : (
+        ""
+      )}
+      {showpay && oid ? (
+        <>
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "rgba(1,1,1,0.4)",
+            }}
+          >
+            <MyImage
+              name={oid + "1.png"}
+              folder={"orderimages"}
+              width={400}
+              height={400}
+              alt={"my image"}
+              download={false}
+            />
+            <button onClick={() => setshowpay(false)}>Close</button>
+          </div>
+        </>
       ) : (
         ""
       )}
