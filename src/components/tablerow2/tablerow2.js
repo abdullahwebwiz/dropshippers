@@ -52,7 +52,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
       showLoaderOnConfirm: true,
       preConfirm: (status) => {
         return fetch(
-          `http://localhost:3000/api/generalorders/updatestatus/${oid}/${status}`
+          `${data2.production}/api/generalorders/updatestatus/${oid}/${status}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -81,7 +81,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
 
   async function fetchAndDownloadPDF() {
     try {
-      const response = await fetch("/api/sendpdf?imagename=" + oid);
+      const response = await fetch(data2.production+"/api/sendpdf?imagename=" + oid);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");

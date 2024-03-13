@@ -6,7 +6,7 @@ import style from "./page.module.css";
 import { apiCall } from "@/utils/apicall";
 import Cookies from "js-cookie";
 import { redirect, useRouter } from "next/navigation";
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   let router = useRouter();
   let [adminName, setAdminName] = useState("");

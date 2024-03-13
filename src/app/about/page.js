@@ -1,11 +1,13 @@
 "use client";
 import MyImage from "@/components/myimage/myimage";
 import { useState } from "react";
+import { data2 } from "@/data/data2";
 export default function Page() {
-  // In your component or page in the frontend
   async function fetchAndDownloadPDF() {
     try {
-      const response = await fetch("/api/sendpdf?imagename=0trbp1mda20");
+      const response = await fetch(
+        data2.production + "/api/sendpdf?imagename=0trbp1mda20"
+      );
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");

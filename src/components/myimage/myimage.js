@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { data2 } from "@/data/data2";
 const MyImage = ({
   folder,
   name,
@@ -16,7 +17,7 @@ const MyImage = ({
     async function getImage() {
       const imageName = "7kyfno2ai80.png"; // Change this to your desired image name
       const res = await fetch(
-        `http://localhost:3000/api/sendimage?imagename=${name}&folder=${folder}`
+        `${data2.production}/api/sendimage?imagename=${name}&folder=${folder}`
       );
       console.log(res);
       if (res.ok) {

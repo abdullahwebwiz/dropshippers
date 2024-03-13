@@ -36,7 +36,7 @@ const Page = () => {
 
   React.useEffect(() => {
     if (d_id) {
-      fetch(data2.development + "/api/dropshippers/getdropshipper/" + d_id)
+      fetch(data2.production + "/api/dropshippers/getdropshipper/" + d_id)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -66,7 +66,7 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        data2.development + "/api/dropshippers/adddropshipper",
+        data2.production + "/api/dropshippers/adddropshipper",
         {
           method: "POST",
           body: formDataToSend,

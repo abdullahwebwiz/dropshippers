@@ -77,7 +77,7 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
       showLoaderOnConfirm: true,
       preConfirm: (status) => {
         return fetch(
-          `http://localhost:3000/api/generalorders/updatestatus/${oid}/${status}`
+          `${data2.production}/api/generalorders/updatestatus/${oid}/${status}`
         )
           .then((response) => {
             if (!response.ok) {

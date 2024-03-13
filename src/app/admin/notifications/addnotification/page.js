@@ -6,6 +6,7 @@ import style from "./page.module.css";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import { data2 } from "@/data/data2";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
