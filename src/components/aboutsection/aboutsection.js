@@ -6,7 +6,7 @@ const AboutSection = () => {
       <div className={style.maincon}>
         <div className={style.para}>
           {
-            "Did you know that nearly 50% of businesses fail within their first five years, according to Shopify? Its is due to some of major problems like: low investments, poor inventory management, high packaging costs, and expensive shipment fees. But here at Dropshippers.pk you can list and sell as many products as you desire on daraz, shopify and more, without the burden of investments, shipping complexities, packaging concerns, and more. 🚀 Signup fo free and start your halal dropshipping journey. ✨ "
+            "Did you know that nearly 50% of businesses fail within their first five years, according to Shopify? Its is due to some of major problems like: low investments, poor inventory management, high packaging costs, and expensive shipment fees. But here at Dropshippers.pk you can list and sell as many products as you desire on daraz, shopify and more, without the burden of investments, shipping complexities, packaging concerns, and more. 🚀 Signup for free and start your halal dropshipping journey. ✨ "
           }
         </div>
         <div className={style.video}>
