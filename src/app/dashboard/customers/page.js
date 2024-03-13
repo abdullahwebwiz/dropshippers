@@ -5,12 +5,13 @@ import Header from "../header";
 import Cookies from "js-cookie";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setRows] = useState(null);
   const d_id = Cookies.get("d_id");
   React.useEffect(() => {
     if (d_id) {
-      fetch("http://localhost:3000/api/customers/getcustomersfew/" + d_id)
+      fetch(data2.production+"/api/customers/getcustomersfew/" + d_id)
         .then((response) => response.json())
         .then((data) => {
           setRows(data);

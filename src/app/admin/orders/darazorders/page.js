@@ -16,13 +16,13 @@ import { format } from "date-fns";
 import { Button } from "@mui/material";
 import TableRow1 from "@/components/tablerow1/tablerow1";
 import TableRow2 from "@/components/tablerow2/tablerow2";
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setRows] = useState(null);
 
   //___________________________________________________________________________
   useEffect(() => {
-    fetch("http://localhost:3000/api/darazorders/getordersall")
+    fetch(data2.production+"/api/darazorders/getordersall")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);

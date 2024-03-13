@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 import style from "./page.module.css";
 import Header from "../header";
 import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
+import { data2 } from "@/data/data2";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -34,7 +35,7 @@ const Page = () => {
   const d_id = Cookies.get("d_id");
   React.useEffect(() => {
     if (d_id) {
-      fetch("http://localhost:3000/api/dropshippers/getdropshipper/" + d_id)
+      fetch(data2.production+"/api/dropshippers/getdropshipper/" + d_id)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -72,7 +73,7 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/dropshippers/updatedropshipper",
+        data2.production+"/api/dropshippers/updatedropshipper",
         {
           method: "POST",
           body: formDataToSend,

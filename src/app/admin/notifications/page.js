@@ -5,13 +5,13 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import React from "react";
-
+import { data2 } from "@/data/data2";
 
 const Page = () => {
   let [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/api/notifications/getnotifications")
+    fetch(data2.production+"/api/notifications/getnotifications")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -20,7 +20,7 @@ const Page = () => {
   }, []);
 
   const deletenotification = (n_id) => {
-    fetch("http://localhost:3000/api/notifications/deletenotification/" + n_id)
+    fetch(data2.production+"/api/notifications/deletenotification/" + n_id)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

@@ -4,13 +4,14 @@ import style from "./page.module.css";
 import Link from "next/link";
 import MyImage from "@/components/myimage/myimage";
 import { Button } from "@mui/material";
+import { data2 } from "@/data/data2";
 const Page = (props) => {
   let [data, setData] = useState(null);
   let [download, setdownload] = useState(false);
   let pid = props.params.pid;
   React.useEffect(() => {
     if (pid) {
-      fetch("http://localhost:3000/api/products/getproduct/" + pid)
+      fetch(data2.production+"/api/products/getproduct/" + pid)
         .then((response) => response.json())
         .then((data) => {
           setData(data);

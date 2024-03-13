@@ -4,10 +4,11 @@ import Header from "../header";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setrows] = useState();
   useEffect(() => {
-    fetch("http://localhost:3000/api/notifications/getnotifications")
+    fetch(data2.production+"/api/notifications/getnotifications")
       .then((response) => response.json())
       .then((data) => {
         setrows(data);

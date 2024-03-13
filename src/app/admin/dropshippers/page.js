@@ -11,12 +11,12 @@ import {
   TableRow,
   Paper,
 } from "@mui/material"; // Import MUI components
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setRows] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/dropshippers/getdropshippers")
+    fetch(data2.production+"/api/dropshippers/getdropshippers")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);

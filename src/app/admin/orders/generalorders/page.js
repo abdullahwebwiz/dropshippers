@@ -14,13 +14,13 @@ import {
 import { format } from "date-fns";
 import { Button } from "@mui/material";
 import TableRow1 from "@/components/tablerow1/tablerow1";
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setRows] = useState(null);
 
   //___________________________________________________________________________
   useEffect(() => {
-    fetch("http://localhost:3000/api/generalorders/getordersall")
+    fetch(data2.production+"/api/generalorders/getordersall")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);

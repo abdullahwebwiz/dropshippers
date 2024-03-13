@@ -6,6 +6,7 @@ import style from "./page.module.css";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import { data2 } from "@/data/data2";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -31,7 +32,7 @@ const Page = (content) => {
   });
   useEffect(() => {
     console.log("api calling!!!");
-    fetch("http://localhost:3000/api/products/getproduct/" + p_id)
+    fetch(data2.production+"/api/products/getproduct/" + p_id)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -60,7 +61,7 @@ const Page = (content) => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/products/updateproduct/",
+        data2.production+"/api/products/updateproduct/",
         {
           method: "POST",
           body: formDataToSend,

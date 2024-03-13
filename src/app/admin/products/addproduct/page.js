@@ -86,7 +86,7 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/products/addproduct",
+        data2.production+"/api/products/addproduct",
         {
           method: "POST",
           body: formDataToSend,

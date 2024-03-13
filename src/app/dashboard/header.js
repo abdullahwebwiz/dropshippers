@@ -32,7 +32,7 @@ const Header = () => {
   useEffect(() => {
     if (cookieValue) {
       fetch(
-        "http://localhost:3000/api/dropshippers/getdropshipper/" + cookieValue
+        data2.production+"/api/dropshippers/getdropshipper/" + cookieValue
       )
         .then((response) => response.json())
         .then((data) => {

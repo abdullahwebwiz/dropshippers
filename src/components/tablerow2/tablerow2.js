@@ -4,6 +4,7 @@ import { TableRow, TableCell } from "@mui/material";
 import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { data2 } from "@/data/data2";
 import MyImage from "../myimage/myimage";
 const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
@@ -15,7 +16,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (pid) {
-      fetch("http://localhost:3000/api/products/getproduct/" + pid)
+      fetch(data2.production+"/api/products/getproduct/" + pid)
         .then((response) => response.json())
         .then((data) => {
           setproduct(data);

@@ -15,7 +15,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (adminName && password) {
-      const url = "http://localhost:3000/api/adminverify";
+      const url = data2.production+"/api/adminverify";
       const method = "POST";
       const body = {
         admin: adminName,

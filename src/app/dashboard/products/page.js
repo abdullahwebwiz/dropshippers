@@ -9,7 +9,7 @@ import Image from "next/image";
 import MyImage from "@/components/myimage/myimage";
 import Popup1 from "@/components/popup1/popup1";
 import { useRouter } from "next/navigation";
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   let [rows, setRows] = useState(null);
   let [des, setDes] = useState("");
@@ -18,7 +18,7 @@ const Page = () => {
   let [pid, setpid] = useState("");
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/api/products/getproducts")
+    fetch(data2.production+"/api/products/getproducts")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);

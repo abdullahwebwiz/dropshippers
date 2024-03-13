@@ -4,6 +4,7 @@ import { TableRow, TableCell } from "@mui/material";
 import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { data2 } from "@/data/data2";
 const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
   let [customer, setcustomer] = useState(null);
@@ -17,7 +18,7 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (pid) {
-      fetch("http://localhost:3000/api/products/getproduct/" + pid)
+      fetch(data2.production+"/api/products/getproduct/" + pid)
         .then((response) => response.json())
         .then((data) => {
           setproduct(data);
@@ -27,7 +28,7 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (cid) {
-      fetch("http://localhost:3000/api/customers/getcustomer/" + cid)
+      fetch(data2.production+"/api/customers/getcustomer/" + cid)
         .then((response) => response.json())
         .then((data) => {
           setcustomer(data);

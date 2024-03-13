@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { data2 } from "@/data/data2";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -26,6 +27,7 @@ const Page = () => {
     phone: "",
     password: "",
   });
+  console.log(data2);
   let router = useRouter();
   const handleSubmit = async () => {
     const { phone, password } = formData;
@@ -44,13 +46,10 @@ const Page = () => {
 
     try {
       console.log(formDataToSend);
-      const response = await fetch(
-        "http://localhost:3000/api/dropshippers/login",
-        {
-          method: "POST",
-          body: formDataToSend,
-        }
-      );
+      const response = await fetch(data2.development + "api/dropshippers/login", {
+        method: "POST",
+        body: formDataToSend,
+      });
       const result = await response.json();
       console.log(response);
       console.log(result);

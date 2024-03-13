@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { format } from "date-fns";
+import { data2 } from "@/data/data2";
 const Page = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [shippingLabel, setShippingLabel] = useState(null);
@@ -26,7 +27,7 @@ const Page = () => {
 
   React.useEffect(() => {
     if (d_id) {
-      fetch("http://localhost:3000/api/darazorders/getorders/" + d_id) 
+      fetch(data2.production+"/api/darazorders/getorders/" + d_id) 
         .then((response) => response.json())
         .then((data) => {
           setRows(data);
@@ -59,7 +60,7 @@ const Page = () => {
     formData.append("d_id", d_id);
 
     // Send POST request
-    fetch("http://localhost:3000/api/darazorders/addorder", {
+    fetch(data2.production+"/api/darazorders/addorder", {
       method: "POST",
       body: formData,
     })

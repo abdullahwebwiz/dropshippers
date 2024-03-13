@@ -8,7 +8,8 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import style from "./page.module.css";
-import { data1 } from "@/data/data1"; // Importing the data1 object from data.js
+import { data1 } from "@/data/data1";
+import { data2 } from "@/data/data2";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -35,7 +36,7 @@ const Page = () => {
 
   React.useEffect(() => {
     if (d_id) {
-      fetch(data2.production+"/api/dropshippers/getdropshipper/" + d_id)
+      fetch(data2.development + "/api/dropshippers/getdropshipper/" + d_id)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -65,7 +66,7 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        data2.production+"/api/dropshippers/adddropshipper",
+        data2.development + "/api/dropshippers/adddropshipper",
         {
           method: "POST",
           body: formDataToSend,

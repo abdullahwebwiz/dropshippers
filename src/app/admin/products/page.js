@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import Swal from "sweetalert2";
-
+import { data2 } from "@/data/data2";
 function createData(
   Product_ID,
   Name,
@@ -43,7 +43,7 @@ const Page = () => {
   let [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/api/products/getproducts")
+    fetch(data2.production+"/api/products/getproducts")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -53,7 +53,7 @@ const Page = () => {
 
   const deleteProduct = (p_id) => {
     alert(p_id);
-    fetch("http://localhost:3000/api/products/deleteproduct/" + p_id)
+    fetch(data2.production+"/api/products/deleteproduct/" + p_id)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

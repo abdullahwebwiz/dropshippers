@@ -54,7 +54,7 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        "http://localhost:3000/api/customers/addcustomer/",
+        data2.production+"/api/customers/addcustomer/",
         {
           method: "POST",
           body: formDataToSend,
