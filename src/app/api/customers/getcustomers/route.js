@@ -3,7 +3,7 @@ import { Customer } from "@/lib/model/customers";
 import mongoose from "mongoose";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-export const revalidate = 1;
+
 export const GET = async (request) => {
   let path = request.nextUrl.searchParams.get('path') || '/';
   try {
