@@ -4,6 +4,7 @@ export async function middleware(request) {
   const adminIdCookie = request.cookies.get("adminid")?.value;
   const d_idCookie = request.cookies.get("d_id")?.value;
   const adminIdEnv = process.env.ADMIN_ID;
+  console.log("this is fun:" + adminIdEnv);
 
   if (!adminIdCookie && request.nextUrl.pathname.startsWith("/admin")) {
     return NextResponse.rewrite(new URL("/adminverify", request.url));
