@@ -31,7 +31,9 @@ const Page = () => {
   let [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(data2.production+"/api/customers/getcustomers")
+    fetch(data2.production + "/api/customers/getcustomers", {
+      cache: "no-store",
+    })
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -40,7 +42,7 @@ const Page = () => {
   }, []);
 
   const deleteCustomer = (c_id) => {
-    fetch(data2.production+"/api/customers/deletecustomer/" + c_id)
+    fetch(data2.production + "/api/customers/deletecustomer/" + c_id)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
