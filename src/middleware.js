@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function middleware(request) {
   const adminIdCookie = request.cookies.get("adminid")?.value;
   const d_idCookie = request.cookies.get("d_id")?.value;
-  const adminIdEnv = process.env.ADMIN_ID;
+  const adminIdEnv = process.env.NEXT_PUBLIC_ADMIN_ID;
   console.log("this is fun:" + adminIdEnv);
 
   if (!adminIdCookie && request.nextUrl.pathname.startsWith("/admin")) {
@@ -59,10 +59,7 @@ export async function middleware(request) {
   if (d_idCookie && protectedPages.includes(pathname)) {
     return NextResponse.redirect(new URL("/signup", request.url));
   }
-  if (
-    !d_idCookie &&
-    request.nextUrl.pathname.startsWith("/dashboard")
-  ) {
+  if (!d_idCookie && request.nextUrl.pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 

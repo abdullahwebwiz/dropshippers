@@ -45,7 +45,7 @@ const Page = () => {
 
     try {
       console.log(formDataToSend);
-      const response = await fetch(data2.production + "/api/dropshippers/login", {
+      const response = await fetch("/api/dropshippers/login", {
         method: "POST",
         body: formDataToSend,
       });
