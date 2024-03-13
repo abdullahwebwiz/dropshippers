@@ -24,6 +24,7 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import GroupIcon from "@mui/icons-material/Group";
 import LockIcon from "@mui/icons-material/Lock";
 import CategoryIcon from '@mui/icons-material/Category';
+import { data2 } from "@/data/data2";
 const Header = () => {
   const [name, setName] = useState("");
   const [openDrawer, setOpenDrawer] = useState(false);

@@ -13,6 +13,7 @@ const Page = () => {
   let [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
+    console.log(1);
     e.preventDefault();
     if (adminName && password) {
       const url = data2.production+"/api/adminverify";

@@ -27,7 +27,6 @@ const Page = () => {
     phone: "",
     password: "",
   });
-  console.log(data2);
   let router = useRouter();
   const handleSubmit = async () => {
     const { phone, password } = formData;
@@ -46,7 +45,7 @@ const Page = () => {
 
     try {
       console.log(formDataToSend);
-      const response = await fetch(data2.development + "api/dropshippers/login", {
+      const response = await fetch(data2.production + "api/dropshippers/login", {
         method: "POST",
         body: formDataToSend,
       });

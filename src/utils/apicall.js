@@ -1,6 +1,7 @@
 // utils/api.js
 
 export async function apiCall(url, method, body) {
+  console.log(url);
   try {
     const options = {
       method,
