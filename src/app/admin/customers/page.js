@@ -105,7 +105,7 @@ const Page = async () => {
                         fontWeight: "bold",
                       }}
                     >
-                      Delete
+                      delete
                     </TableCell>
                   </TableRow>
                 </TableHead>
