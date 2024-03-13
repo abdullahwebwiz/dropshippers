@@ -2,7 +2,7 @@ import { mdb_url } from "@/lib/db";
 import { Customer } from "@/lib/model/customers";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
-export const revalidate = true;
+export const revalidate = 1;
 export const GET = async (req, content) => {
   try {
     await mongoose.connect(mdb_url);
