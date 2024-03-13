@@ -21,7 +21,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 import Header from "../../header";
-
+import { data2 } from "@/data/data2";
 const Page = () => {
   const d_id = Cookies.get("d_id");
 
