@@ -32,9 +32,7 @@ const Page = () => {
 
   React.useEffect(() => {
     fetch(data2.production + "/api/customers/getcustomers", {
-      next: {
-        revalidate: 0,
-      },
+      cache: "no-store",
     })
       .then((response) => response.json())
       .then((data) => {
