@@ -32,7 +32,7 @@ let data = [
 const ReviewSection = () => {
   return (
     <div className={style.parent}>
-      <Title color={'p'} title={'DropShippers Reviews 🌟'} />
+      <Title color={'p'} title={'DropShippers Reviews 🌟 (Not real)'} />
       <div className={style.main}>
         {
           data ?

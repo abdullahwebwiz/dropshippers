@@ -4,7 +4,7 @@ const Stat = () => {
   return (
     <>
       <div className={style.main}>
-        <Title title={"Some Data 📊 "} color={"p"} />
+        <Title title={"Some Data 📊 (Not Real)"} color={"p"} />
         <div className={style.con}>
           <div className={style.block}>
             <div className={style.num}>200+</div>

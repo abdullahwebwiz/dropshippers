@@ -3,6 +3,7 @@ import style from "./herobar.module.css";
 import { Button } from "@mui/material";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import SchoolIcon from "@mui/icons-material/School";
+import Link from "next/link";
 const HeroBar = () => {
   return (
     <div className={style.main}>
@@ -21,29 +22,33 @@ const HeroBar = () => {
         />
       </div>
       <div className={style.butcon}>
-        <Button
-          variant="outlined"
-          style={{
-            border: "2px solid #006600",
-            color: "#006600",
-            fontWeight: "bold",
-            backgroundColor:'white',
-            
-          }}
-          endIcon={<SchoolIcon />}
-        >
-          Tutorials
-        </Button>
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "#006600",
-            fontWeight: "bold",
-          }}
-          endIcon={<VpnKeyIcon />}
-        >
-          Sign Up
-        </Button>
+        <Link href={"/signup"}>
+          {" "}
+          <Button
+            variant="outlined"
+            style={{
+              border: "2px solid #006600",
+              color: "#006600",
+              fontWeight: "bold",
+              backgroundColor: "white",
+            }}
+            endIcon={<SchoolIcon />}
+          >
+            Tutorials
+          </Button>
+        </Link>
+        <Link href={"signup"}>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "#006600",
+              fontWeight: "bold",
+            }}
+            endIcon={<VpnKeyIcon />}
+          >
+            Sign Up
+          </Button>
+        </Link>
       </div>
     </div>
   );

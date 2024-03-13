@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from "./productcard.module.css";
 const ProductCard = () => {
   return (
+    
     <div className={style.main}>
       <div className={style.imgcon}>
         <Image

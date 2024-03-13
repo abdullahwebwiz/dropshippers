@@ -22,7 +22,7 @@ const FAQS = () => {
             border: "2px solid white",
           }}
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Coming Soon</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{ backgroundColor: "#ede9e8", color: "purple" }}
@@ -45,7 +45,7 @@ const FAQS = () => {
             border: "2px solid white",
           }}
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Coming Soon</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{ backgroundColor: "#ede9e8", color: "purple" }}
@@ -68,7 +68,7 @@ const FAQS = () => {
             border: "2px solid white",
           }}
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Coming Soon</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{ backgroundColor: "#ede9e8", color: "purple" }}
@@ -91,7 +91,7 @@ const FAQS = () => {
             border: "2px solid white",
           }}
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Coming Soon</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{ backgroundColor: "#ede9e8", color: "purple" }}
@@ -114,7 +114,7 @@ const FAQS = () => {
             border: "2px solid white",
           }}
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Coming Soon</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{ backgroundColor: "#ede9e8", color: "purple" }}
