@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request) => {
-  let path = request.nextUrl.searchParams.get('path') || '/';
+export const GET = async (req) => {
+  let path = req.nextUrl.searchParams.get('path') || '/';
   try {
     await mongoose.connect(mdb_url);
     let result = await Customer.find();

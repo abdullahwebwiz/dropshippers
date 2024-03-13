@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
-export const GET = async () => {
+export const GET = async (req) => {
   let path = req.nextUrl.searchParams.get("path") || "/";
 
   try {

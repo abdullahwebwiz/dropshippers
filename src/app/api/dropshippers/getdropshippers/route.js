@@ -9,7 +9,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { revalidatePath } from "next/cache";
 
-export const GET = async () => {
+export const GET = async (req) => {
   let path = req.nextUrl.searchParams.get('path') || '/';
 
     console.log('aloooooooooo');
