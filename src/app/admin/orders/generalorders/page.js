@@ -10,7 +10,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-} from "@mui/material"; 
+} from "@mui/material";
 import { format } from "date-fns";
 import { Button } from "@mui/material";
 import TableRow1 from "@/components/tablerow1/tablerow1";
@@ -55,13 +55,14 @@ const Page = () => {
               {rows &&
                 rows.map((row, index) => (
                   <TableRow1
-                  oid={row.o_id}
+                    oid={row.o_id}
                     did={row.d_id}
                     pid={row.p_id}
                     cid={row.c_id}
                     epoch={row.epoch}
                     status={row.status}
                     quantity={row.p_quantity}
+                    key={row.o_idf}
                   />
                 ))}
             </TableBody>
