@@ -50,7 +50,6 @@ export const POST = async (req) => {
     });
 
     await product.save();
-
     return NextResponse.json({ msg: "success" });
   } catch (error) {
     console.log(error);

@@ -86,13 +86,14 @@ const Page = () => {
     try {
       console.log(formDataToSend);
       const response = await fetch(
-        data2.production+"/api/products/addproduct",
+        data2.production + "/api/products/addproduct",
         {
           method: "POST",
           body: formDataToSend,
         }
       );
-      console.log(response);
+      let result = await response.json();
+      console.log(result);
       if (response.ok) {
         // setFormData({
         //   name: "",
