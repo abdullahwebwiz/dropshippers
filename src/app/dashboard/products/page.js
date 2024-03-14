@@ -4,10 +4,7 @@ import Header from "../header";
 import style from "./page.module.css";
 import React, { useEffect, useState } from "react";
 import ProductCard from "@/components/productcard/productcard";
-import x from "../../../productimages/5nyjdxaheb0.png";
 import Image from "next/image";
-import MyImage from "@/components/myimage/myimage";
-import Popup1 from "@/components/popup1/popup1";
 import { useRouter } from "next/navigation";
 import { data2 } from "@/data/data2";
 const Page = () => {
@@ -18,7 +15,7 @@ const Page = () => {
   let [pid, setpid] = useState("");
 
   React.useEffect(() => {
-    fetch(data2.production+"/api/products/getproducts")
+    fetch(data2.production + "/api/products/getproducts")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -46,7 +43,7 @@ const Page = () => {
                   >
                     {" "}
                     <ProductCard
-                      image={d.p_id + "0" + ".png"}
+                      image={d.p_id + "0"}
                       title={d.title}
                       category={d.category}
                       productId={d.p_id}

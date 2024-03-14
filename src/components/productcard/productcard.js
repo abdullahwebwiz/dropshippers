@@ -2,7 +2,9 @@ import style from "./productcard.module.css";
 import MyImage from "../myimage/myimage";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Chip, IconButton } from "@mui/material";
+import { data2 } from "@/data/data2";
 import { copy } from "clipboard";
+import Image from "next/image";
 const ProductCard = ({ image, title, price, productId, category, status }) => {
   return (
     <div className={style.card}>
@@ -15,13 +17,11 @@ const ProductCard = ({ image, title, price, productId, category, status }) => {
       />
 
       <div className={style.imgcon}>
-        <MyImage
-          name={image}
-          folder={"productimages"}
+        <Image
+          src={data2.fileurl + "productimages/" + image + ".png"}
           width={200}
           height={200}
-          alt={"my image"}
-          download={false}
+          alt="my imge"
         />
       </div>
       <div className={style.info}>

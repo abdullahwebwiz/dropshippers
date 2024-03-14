@@ -21,26 +21,30 @@ export const POST = async (req) => {
       .filter(Boolean)
       .map(async (file, index) => {
         const { name, type, size, lastModified } = file;
-        const newFilename = o_id + index + "." + name.split(".").pop();
-        // const buff = Buffer.from(await file.arrayBuffer());
-
-        // await fs.writeFile(`./src/orderimages/${newFilename}`, buff);
-        // return newFilename;
-        const blob = await put("shipping_labels/" + newFilename, file, {
-          access: "public",
-          addRandomSuffix: false,
-        });
+        const newFilename = o_id + index + ".png" + name.split(".").pop();
+        console.log(type);
+        if (type == "application/pdf") {
+          const blob = await put("shipping_labels/" + newFilename, file, {
+            access: "public",
+            addRandomSuffix: false,
+          });
+        } else {
+          const blob = await put("payments/" + o_id + index + ".png", file, {
+            access: "public",
+            addRandomSuffix: false,
+          });          
+        }
         return newFilename;
       });
 
     const savedFiles = await Promise.all(files);
-
     const darazOrder = new DarazOrder({
       o_id: o_id,
       d_id: d_id,
       p_id: productId,
       p_quantity: quantity,
       epoch: currentEpochTime,
+      paymentimg: newFilename,
       status: "processing",
     });
     await darazOrder.save();

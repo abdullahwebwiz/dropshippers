@@ -6,6 +6,7 @@ const darazOrderModel = new mongoose.Schema({
   p_id: String,
   p_quantity: String,
   epoch: String,
+  paymentimg:String,
   status: String,
 });
 

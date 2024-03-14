@@ -5,7 +5,8 @@ import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { data2 } from "@/data/data2";
-import MyImage from "../myimage/myimage";
+import Image from "next/image";
+import Link from "next/link";
 const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
   let [showpay, setshowpay] = useState(false);
@@ -16,7 +17,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (pid) {
-      fetch(data2.production+"/api/products/getproduct/" + pid)
+      fetch(data2.production + "/api/products/getproduct/" + pid)
         .then((response) => response.json())
         .then((data) => {
           setproduct(data);
@@ -78,30 +79,18 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
       }
     });
   };
-
-  async function fetchAndDownloadPDF() {
-    try {
-      const response = await fetch(data2.production+"/api/sendpdf?imagename=" + oid);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "myfile.pdf";
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error("Error fetching PDF:", error);
-    }
-  }
-
   return (
     <>
-      {did && product ? (
+      {did && product && oid ? (
         <TableRow>
           <TableCell>{did}</TableCell>
-          <TableCell onClick={fetchAndDownloadPDF}>Download label</TableCell>
+          <Link
+            href={data2.fileurl + "shipping_labels/" + oid + "0.pdf"}
+            target="_blank"
+          >
+            {" "}
+            <TableCell>Download label</TableCell>
+          </Link>
           <TableCell onClick={() => setshowpay(true)}>View Payment</TableCell>
           <TableCell onClick={() => handlealert("p")}>
             {product.title}
@@ -130,13 +119,11 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
               backgroundColor: "rgba(1,1,1,0.4)",
             }}
           >
-            <MyImage
-              name={oid + "1.png"}
-              folder={"orderimages"}
+            <Image
+              src={data2.fileurl + "payments/" + oid + "1.png"}
               width={400}
               height={400}
               alt={"my image"}
-              download={false}
             />
             <button onClick={() => setshowpay(false)}>Close</button>
           </div>
