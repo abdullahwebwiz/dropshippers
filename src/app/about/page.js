@@ -1,37 +1,40 @@
-"use client";
-import MyImage from "@/components/myimage/myimage";
-import { useState } from "react";
-import { data2 } from "@/data/data2";
-export default function Page() {
-  async function fetchAndDownloadPDF() {
-    try {
-      const response = await fetch(
-        data2.production + "/api/sendpdf?imagename=0trbp1mda20"
-      );
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "myfile.pdf";
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error("Error fetching PDF:", error);
-    }
-  }
+'use client';
 
+import { useState, useRef } from 'react';
+
+export default function AvatarUploadPage() {
+  const inputFileRef = useRef(null);
+  const [blob, setBlob] = useState(null);
   return (
-    <div>
-      <div
-        onClick={() => {
-          alert();
-          fetchAndDownloadPDF();
+    <>
+      <h1>Upload Your Avatar</h1>
+
+      <form
+        onSubmit={async (event) => {
+          event.preventDefault();
+
+          const file = inputFileRef.current.files[0];
+          const response = await fetch(
+            `/api/avatar/upload?filename=${file.name}`,
+            {
+              method: 'POST',
+              body: file,
+            },
+          );
+
+          const newBlob = (await response.json());
+
+          setBlob(newBlob);
         }}
       >
-        About
-      </div>
-    </div>
+        <input name="file" ref={inputFileRef} type="file" required />
+        <button type="submit">Upload</button>
+      </form>
+      {blob && (
+        <div>
+          Blob url: <a href={blob.url}>{blob.url}</a>
+        </div>
+      )}
+    </>
   );
 }

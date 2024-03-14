@@ -148,7 +148,7 @@ const Page = (content) => {
           />
           <TextField
             id="outlined-basic"
-            label="Description"
+            label="Status"
             variant="outlined"
             style={{ width: "95%" }}
             value={formData.status}

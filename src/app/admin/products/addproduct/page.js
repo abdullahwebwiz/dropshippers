@@ -93,22 +93,19 @@ const Page = () => {
         }
       );
       let result = await response.json();
-      console.log(result);
-      if (response.ok) {
-        // setFormData({
-        //   name: "",
-        //   price: "",
-        //   videoLink: "",
-        //   description: "",
-        //   images: [],
-        // });
-
+      console.log(result.msg);
+      if (result.msg == "success") {
         Swal.fire({
           title: "Form Submitted",
           text: "Your form has been submitted successfully",
           icon: "success",
         });
       } else {
+        Swal.fire({
+          title: "Error",
+          text: "Failed to submit form. Please try again later.",
+          icon: "error",
+        });
         throw new Error("Failed to submit form");
       }
     } catch (error) {
