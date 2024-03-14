@@ -121,7 +121,7 @@ const Page = () => {
   const handleFileChange = (event) => {
     const files = event.target.files;
     const selectedImages = [];
-
+    console.log(files);
     for (let i = 0; i < files.length; i++) {
       if (files[i].type === "image/png") {
         selectedImages.push(files[i]);

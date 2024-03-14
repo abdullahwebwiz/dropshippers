@@ -1,7 +1,5 @@
-'use client';
-
-import { useState, useRef } from 'react';
-
+"use client";
+import { useState, useRef } from "react";
 export default function AvatarUploadPage() {
   const inputFileRef = useRef(null);
   const [blob, setBlob] = useState(null);
@@ -14,15 +12,19 @@ export default function AvatarUploadPage() {
           event.preventDefault();
 
           const file = inputFileRef.current.files[0];
+          const formDataToSend = new FormData();
+          formDataToSend.append("file", file);
+
+          console.log(file);
           const response = await fetch(
             `/api/avatar/upload?filename=${file.name}`,
             {
-              method: 'POST',
-              body: file,
-            },
+              method: "POST",
+              body: formDataToSend,
+            }
           );
 
-          const newBlob = (await response.json());
+          const newBlob = await response.json();
 
           setBlob(newBlob);
         }}

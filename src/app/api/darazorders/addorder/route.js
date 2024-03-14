@@ -6,6 +6,7 @@ import { join } from "path";
 import { customAlphabet } from "nanoid";
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
@@ -16,22 +17,19 @@ export const POST = async (req) => {
     let o_id = nanoid();
     const currentEpochTime = Date.now();
 
-    console.log(shippingLabel);
-    console.log(paymentReceipt);
-    console.log(productId);
-    console.log(quantity);
-    console.log(d_id);
-    console.log(o_id);
-    console.log(currentEpochTime);
-
     const files = [shippingLabel, paymentReceipt]
       .filter(Boolean)
       .map(async (file, index) => {
         const { name, type, size, lastModified } = file;
         const newFilename = o_id + index + "." + name.split(".").pop();
-        const buff = Buffer.from(await file.arrayBuffer());
+        // const buff = Buffer.from(await file.arrayBuffer());
 
-        await fs.writeFile(`./src/orderimages/${newFilename}`, buff);
+        // await fs.writeFile(`./src/orderimages/${newFilename}`, buff);
+        // return newFilename;
+        const blob = await put("shipping_labels/" + newFilename, file, {
+          access: "public",
+          addRandomSuffix: false,
+        });
         return newFilename;
       });
 
