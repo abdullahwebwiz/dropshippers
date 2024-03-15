@@ -21,7 +21,7 @@ export const POST = async (req) => {
       .filter(Boolean)
       .map(async (file, index) => {
         const { name, type, size, lastModified } = file;
-        const newFilename = o_id + index + ".png" + name.split(".").pop();
+        const newFilename = o_id + index + "." + name.split(".").pop();
         console.log(type);
         if (type == "application/pdf") {
           const blob = await put("shipping_labels/" + newFilename, file, {
@@ -44,7 +44,6 @@ export const POST = async (req) => {
       p_id: productId,
       p_quantity: quantity,
       epoch: currentEpochTime,
-      paymentimg: newFilename,
       status: "processing",
     });
     await darazOrder.save();
@@ -54,3 +53,5 @@ export const POST = async (req) => {
     return NextResponse.json({ msg: "failed" });
   }
 };
+
+

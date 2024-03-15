@@ -53,7 +53,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
       showLoaderOnConfirm: true,
       preConfirm: (status) => {
         return fetch(
-          `${data2.production}/api/generalorders/updatestatus/${oid}/${status}`
+          `${data2.production}/api/darazorders/updatestatus/${oid}/${status}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -84,14 +84,24 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
       {did && product && oid ? (
         <TableRow>
           <TableCell>{did}</TableCell>
-          <Link
-            href={data2.fileurl + "shipping_labels/" + oid + "0.pdf"}
-            target="_blank"
-          >
-            {" "}
-            <TableCell>Download label</TableCell>
-          </Link>
-          <TableCell onClick={() => setshowpay(true)}>View Payment</TableCell>
+          <TableCell>
+            <Link
+              href={data2.fileurl + "shipping_labels/" + oid + "0.pdf"}
+              target="_blank"
+            >
+              {" "}
+              Download label
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link
+              href={data2.fileurl + "payments/" + oid + "1.png"}
+              target="_blank"
+            >
+              {" "}
+              View Payment
+            </Link>
+          </TableCell>
           <TableCell onClick={() => handlealert("p")}>
             {product.title}
           </TableCell>

@@ -11,7 +11,7 @@ const Page = () => {
   let [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(data2.production+"/api/notifications/getnotifications")
+    fetch(data2.production + "/api/notifications/getnotifications")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -20,7 +20,7 @@ const Page = () => {
   }, []);
 
   const deletenotification = (n_id) => {
-    fetch(data2.production+"/api/notifications/deletenotification/" + n_id)
+    fetch(data2.production + "/api/notifications/deletenotification/" + n_id)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -80,7 +80,7 @@ const Page = () => {
         <div className={style.addbut}>
           <Link href={"/admin/notifications/addnotification"}>
             <Button variant="contained" color="primary">
-              Add Product
+              Add Notification{" "}
             </Button>
           </Link>
         </div>
