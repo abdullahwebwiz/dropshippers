@@ -31,8 +31,8 @@ const Header = () => {
     setOpenDrawer(!openDrawer);
   };
   const menuItems = [
-    { text: "Sign Up", icon: <HowToRegOutlined />, link: "/dashboard/signup" },
-    { text: "Log In", icon: <LoginOutlined />, link: "/dashboard/login" },
+    { text: "Sign Up", icon: <HowToRegOutlined />, link: "/signup" },
+    { text: "Log In", icon: <LoginOutlined />, link: "/login" },
   ];
 
   return (
@@ -125,7 +125,7 @@ const Header = () => {
               <Link
                 href={item.link}
                 key={index}
-                target={item.blank ? "_blank" : "_self"}
+                target={"_blank"}
               >
                 <ListItem button>
                   <ListItemIcon>{item.icon}</ListItemIcon>
