@@ -5,6 +5,8 @@ import Button from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { data2 } from "@/data/data2";
+import Link from "next/link";
+
 const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
   let [product, setproduct] = useState(null);
   let [customer, setcustomer] = useState(null);
@@ -18,7 +20,7 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (pid) {
-      fetch(data2.production+"/api/products/getproduct/" + pid)
+      fetch(data2.production + "/api/products/getproduct/" + pid)
         .then((response) => response.json())
         .then((data) => {
           setproduct(data);
@@ -28,7 +30,7 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
 
   useEffect(() => {
     if (cid) {
-      fetch(data2.production+"/api/customers/getcustomer/" + cid)
+      fetch(data2.production + "/api/customers/getcustomer/" + cid)
         .then((response) => response.json())
         .then((data) => {
           setcustomer(data);
@@ -114,6 +116,15 @@ const TableRow1 = ({ oid, did, pid, cid, epoch, status, quantity }) => {
             {product.title}
           </TableCell>
           <TableCell>{quantity}</TableCell>
+          <TableCell>
+            <Link
+              href={data2.fileurl + "payments/" + oid + ".png"}
+              target="_blank"
+            >
+              {" "}
+              View Payment
+            </Link>
+          </TableCell>
           <TableCell>{format(new Date(Number(epoch)), "MM/dd/yyyy")}</TableCell>
           <TableCell>{format(new Date(Number(epoch)), "hh:mm a")}</TableCell>
           <TableCell>{status}</TableCell>

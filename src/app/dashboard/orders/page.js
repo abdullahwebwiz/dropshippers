@@ -18,7 +18,7 @@ const Page = () => {
       >
         <div className={style.button} style={{ backgroundColor: "#F85606" }}>
           <Link
-            href={"/dashboard/orders/darazorders"}
+            href={"/dashboard/orders/darazOrders"}
             style={{ color: "white" }}
           >
             Daraz Orders
@@ -26,7 +26,7 @@ const Page = () => {
         </div>
         <div className={style.button} style={{ backgroundColor: "#96bf48" }}>
           <Link
-            href={"/dashboard/orders/generalorders"}
+            href={"/dashboard/orders/generalOrders"}
             style={{ color: "white" }}
           >
             General Orders

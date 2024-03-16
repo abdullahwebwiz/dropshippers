@@ -16,18 +16,18 @@ import {
 import { format } from "date-fns";
 import { data2 } from "@/data/data2";
 const Page = () => {
-  
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [c_id, setc_id] = useState("");
   const [productId, setProductId] = useState("");
   const [quantity, setQuantity] = useState("");
   const [rows, setRows] = useState(null);
+  const [paymentScreenshot, setPaymentScreenshot] = useState(null);
 
   let d_id = Cookies.get("d_id");
 
   React.useEffect(() => {
     if (d_id) {
-      fetch(data2.production+"/api/generalorders/getorders/" + d_id)
+      fetch(data2.production + "/api/generalorders/getorders/" + d_id)
         .then((response) => response.json())
         .then((data) => {
           setRows(data);
@@ -46,7 +46,7 @@ const Page = () => {
 
   const handleSubmit = () => {
     // Check if any required fields are empty
-    if (!c_id || !productId || !quantity || !d_id) {
+    if (!c_id || !productId || !quantity || !d_id || !paymentScreenshot) {
       alert("Please fill in all fields.");
       return;
     }
@@ -57,9 +57,9 @@ const Page = () => {
     formData.append("productId", productId);
     formData.append("quantity", quantity);
     formData.append("d_id", d_id);
-
+    formData.append("paymentScreenshot", paymentScreenshot);
     // Send POST request
-    fetch(data2.production+"/api/generalorders/addorder", {
+    fetch(data2.production + "/api/generalorders/addorder", {
       method: "POST",
       body: formData,
     })
@@ -85,6 +85,9 @@ const Page = () => {
 
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
+  };
+  const handlePaymentScreenshotChange = (event) => {
+    setPaymentScreenshot(event.target.files[0]);
   };
 
   return (
@@ -143,6 +146,20 @@ const Page = () => {
             required
             value={quantity}
             onChange={handleQuantityChange}
+            margin="normal"
+          />{" "}
+          <TextField
+            label="Payment Receipt Screenshot"
+            type="file"
+            InputLabelProps={{ shrink: true }}
+            fullWidth
+            required
+            InputProps={{
+              inputProps: {
+                accept: "image/*",
+              },
+            }}
+            onChange={handlePaymentScreenshotChange}
             margin="normal"
           />
         </DialogContent>

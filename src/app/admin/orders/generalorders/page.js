@@ -20,7 +20,7 @@ const Page = () => {
 
   //___________________________________________________________________________
   useEffect(() => {
-    fetch(data2.production+"/api/generalorders/getordersall")
+    fetch(data2.production + "/api/generalorders/getordersall")
       .then((response) => response.json())
       .then((data) => {
         setRows(data);
@@ -45,6 +45,7 @@ const Page = () => {
                 <TableCell>Customer ID</TableCell>
                 <TableCell>Product</TableCell>
                 <TableCell>Quantity</TableCell>
+                <TableCell>Payments</TableCell>
                 <TableCell>Date</TableCell>
                 <TableCell>Time</TableCell>
                 <TableCell>Status</TableCell>

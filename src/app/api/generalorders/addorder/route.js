@@ -6,15 +6,30 @@ import { join } from "path";
 import { customAlphabet } from "nanoid";
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 export const POST = async (req) => {
   try {
     await mongoose.connect(mdb_url);
     let payload = await req.formData();
-    const { c_id, productId, quantity, d_id } = Object.fromEntries(payload);
+    const { c_id, productId, quantity, d_id, paymentScreenshot } =
+      Object.fromEntries(payload);
     const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
     let o_id = nanoid();
     const currentEpochTime = Date.now();
+    console.log(paymentScreenshot);
+    const files = [paymentScreenshot]
+      .filter(Boolean)
+      .map(async (file, index) => {
+        const blob = await put("payments/" + o_id + ".png", file, {
+          access: "public",
+          addRandomSuffix: false,
+        });
+
+        return blob;
+      });
+
+    const savedFiles = await Promise.all(files);
 
     const generalorder = new generalOrder({
       o_id: o_id,

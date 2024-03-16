@@ -21,7 +21,7 @@ export const POST = async (req) => {
       .filter(Boolean)
       .map(async (file, index) => {
         const { name, type, size, lastModified } = file;
-        const newFilename = o_id + index + "." + name.split(".").pop();
+        const newFilename = o_id + ".pdf";
         console.log(type);
         if (type == "application/pdf") {
           const blob = await put("shipping_labels/" + newFilename, file, {
@@ -29,10 +29,10 @@ export const POST = async (req) => {
             addRandomSuffix: false,
           });
         } else {
-          const blob = await put("payments/" + o_id + index + ".png", file, {
+          const blob = await put("payments/" + o_id + ".png", file, {
             access: "public",
             addRandomSuffix: false,
-          });          
+          });
         }
         return newFilename;
       });
@@ -53,5 +53,3 @@ export const POST = async (req) => {
     return NextResponse.json({ msg: "failed" });
   }
 };
-
-

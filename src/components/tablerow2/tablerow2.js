@@ -86,7 +86,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
           <TableCell>{did}</TableCell>
           <TableCell>
             <Link
-              href={data2.fileurl + "shipping_labels/" + oid + "0.pdf"}
+              href={data2.fileurl + "shipping_labels/" + oid + ".pdf"}
               target="_blank"
             >
               {" "}
@@ -95,7 +95,7 @@ const TableRow2 = ({ oid, did, pid, epoch, status, quantity }) => {
           </TableCell>
           <TableCell>
             <Link
-              href={data2.fileurl + "payments/" + oid + "1.png"}
+              href={data2.fileurl + "payments/" + oid + ".png"}
               target="_blank"
             >
               {" "}
